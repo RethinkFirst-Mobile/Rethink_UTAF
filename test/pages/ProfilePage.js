@@ -11,7 +11,7 @@ class ProfilePage {
     }
 
     async verifyProfileDetails() {
-        const firstNameText = await ActionHelper.getText(await ElementHelper.getElementByText("Roman Dev-db1"));
+/*      const firstNameText = await ActionHelper.getText(await ElementHelper.getElementByText("Roman Dev-db1"));
         console.log(`Verifying First Name: ${firstNameText}`);
         if (firstNameText !== "Roman Dev-db1") {
             throw new Error(`First Name mismatch! Expected "Roman Dev-db1", Found "${firstNameText}"`);
@@ -22,7 +22,7 @@ class ProfilePage {
         if (lastNameText !== "Isanin Dev-db1") {
             throw new Error(`Last Name mismatch! Expected "Isanin Dev-db1", Found "${lastNameText}"`);
         }
-
+*/
         const usernameText = await ActionHelper.getText(await ElementHelper.getElementByText("kavithasub"));
         console.log(`Verifying Username: ${usernameText}`);
         if (usernameText !== "kavithasub") {

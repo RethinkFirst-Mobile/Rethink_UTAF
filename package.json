@@ -10,7 +10,8 @@
     "@wdio/spec-reporter": "^9.6.3",
     "allure-commandline": "^2.33.0",
     "appium": "^2.17.1",
-    "appium-uiautomator2-driver": "^4.0.0"
+    "appium-uiautomator2-driver": "^4.0.0",
+    "appium-xcuitest-driver": "^9.0.0"
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js"
