@@ -1,4 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","21414","Should verify profile details","","Mon Mar 17 14:12:51 PDT 2025","broken","Mon Mar 17 14:13:12 PDT 2025","","Profile Test","",""
-"","17884","Should log in and verify profile details","","Mon Mar 17 14:19:31 PDT 2025","passed","Mon Mar 17 14:19:49 PDT 2025","","Login and Profile Verification","",""
-"","10341","Should log in successfully","","Mon Mar 17 14:06:25 PDT 2025","passed","Mon Mar 17 14:06:35 PDT 2025","","Login Test","",""
