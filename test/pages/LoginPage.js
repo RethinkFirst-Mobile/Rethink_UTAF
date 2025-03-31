@@ -1,52 +1,64 @@
 const ActionHelper = require('../helpers/actionHelper');
-const ElementHelper = require('../helpers/elementHelper');
+
 
 class LoginPage {
+    // iOS Selectors
+    get iosLoginBtn() { return $('~Log in'); }
+    get iosUsernameField() { return $('//XCUIElementTypeTextField[@name="Username or Email"]'); }
+    get iosPasswordField() { return $('//XCUIElementTypeSecureTextField[@name="Password"]'); }
+    get iosSignInBtn() { return $('//XCUIElementTypeButton[@name="Sign in"]'); }
+    get iosTapOutside() { return $('//XCUIElementTypeImage[@name="Company Logo"]'); }
+
+    // Android Selectors
+    get androidLoginBtn() { return $('//android.widget.TextView[@text="Log in"]'); }
+    get androidUsernameField() { return $('//android.widget.EditText[@resource-id="signInName"]'); }
+    get androidPasswordField() { return $('//android.widget.EditText[@resource-id="password"]'); }
+    get androidSignInBtn() { return $('//android.widget.Button[@resource-id="next"]'); }
+
     async login(username, password) {
-        const isIOS = driver.capabilities.platformName === 'iOS';
+        if (driver.isIOS) {
+            await ActionHelper.clickElement(this.iosLoginBtn);
+            console.log('Clicked Login button (iOS).');
 
-        if (isIOS) {
-            const loginButton = await $(`~Log in`); // accessibility ID
-            await ActionHelper.clickElement(loginButton);
-        } else {
-            const loginButton = await ElementHelper.getElementByText("Log in");
-            await ActionHelper.clickElement(loginButton);
-        }
-
-        console.log("Clicked Login button.");
-
-        // 💥 iOS system alert handling
-        if (isIOS) {
+            // Handle alert if present
             try {
-                await driver.acceptAlert(); // taps "Continue"/"Allow"
-                console.log("🛡️ iOS system alert accepted.");
-            } catch (err) {
-                if (err.message.includes("no such alert")) {
-                    console.log("No iOS system alert to accept.");
-                } else {
-                    throw err;
+                if (await driver.getAlertText()) {
+                    const alertText = await driver.getAlertText();
+                    console.log(`📢 Alert detected: ${alertText}`);
+                    await driver.acceptAlert();
+                    console.log('✅ iOS alert accepted.');
                 }
+            } catch (e) {
+                console.log('No alert present.');
             }
-        }
 
-        if (isIOS) {
-            await ActionHelper.typeText(await $(`~signInName`), username);
-            console.log("Entered username (iOS).");
+            await ActionHelper.typeText(this.iosUsernameField, username);
+            console.log('Entered username (iOS).');
 
-            await ActionHelper.typeText(await $(`~password`), password);
-            console.log("Entered password (iOS).");
+            await ActionHelper.typeText(this.iosPasswordField, password);
+            console.log('Entered password (iOS).');
 
-            await ActionHelper.clickElement(await $(`~next`));
-            console.log("Clicked Sign-In button (iOS).");
+            try {
+                await this.iosTapOutside.click();
+                console.log('Tapped Company Logo to dismiss keyboard (iOS).');
+            } catch (e) {
+                console.warn('⚠️ Could not tap Company Logo.');
+            }
+
+            await ActionHelper.clickElement(this.iosSignInBtn);
+            console.log('Clicked Sign In (iOS).');
         } else {
-            await ActionHelper.typeText(await ElementHelper.getElementByResourceId("signInName"), username);
-            console.log("Entered username (Android).");
+            await ActionHelper.clickElement(this.androidLoginBtn);
+            console.log('Clicked Login button (Android).');
 
-            await ActionHelper.typeText(await ElementHelper.getElementByResourceId("password"), password);
-            console.log("Entered password (Android).");
+            await ActionHelper.typeText(this.androidUsernameField, username);
+            console.log('Entered username (Android).');
 
-            await ActionHelper.clickElement(await ElementHelper.getElementByResourceId("next"));
-            console.log("Clicked Sign-In button (Android).");
+            await ActionHelper.typeText(this.androidPasswordField, password);
+            console.log('Entered password (Android).');
+
+            await ActionHelper.clickElement(this.androidSignInBtn);
+            console.log('Clicked Sign-In button (Android).');
         }
     }
 }

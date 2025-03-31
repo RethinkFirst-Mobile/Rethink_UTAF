@@ -1,37 +1,43 @@
 const ActionHelper = require('../helpers/actionHelper');
-const ElementHelper = require('../helpers/elementHelper');
 
 class ProfilePage {
-    async navigateToProfile() {
-        await ActionHelper.clickElement(await ElementHelper.getElementByText("More"));
-        console.log("Clicked 'More' button.");
+    // iOS selectors
+    get iosMoreBtn() {return $('-ios predicate string:type == "XCUIElementTypeStaticText" AND name == "More"');}
+    get iosProfileBtn() {return $('//XCUIElementTypeStaticText[@name="Profile"]');}
 
-        await ActionHelper.clickElement(await ElementHelper.getElementByDescription("Profile button icon"));
-        console.log("Clicked 'Profile' button.");
+    // Android selectors
+    get androidMoreBtn() {return $('//android.widget.TextView[@text="More"]');}
+    get androidProfileBtn() {return $('//android.view.View[@content-desc="Profile button icon"]');}
+
+    // Shared selector
+    get profileUsernameText() {
+        return $('//*[contains(@text, "kavithasub") or @name="kavithasub"]');}
+
+    async navigateToProfile() {
+        if (driver.isIOS) {
+            await ActionHelper.clickElement(this.iosMoreBtn);
+            console.log("Clicked 'More' button (iOS).");
+
+            await ActionHelper.clickElement(this.iosProfileBtn);
+            console.log("Clicked 'Profile' button (iOS).");
+        } else {
+            await ActionHelper.clickElement(this.androidMoreBtn);
+            console.log("Clicked 'More' button (Android).");
+
+            await ActionHelper.clickElement(this.androidProfileBtn);
+            console.log("Clicked 'Profile' button (Android).");
+        }
     }
 
     async verifyProfileDetails() {
-/*      const firstNameText = await ActionHelper.getText(await ElementHelper.getElementByText("Roman Dev-db1"));
-        console.log(`Verifying First Name: ${firstNameText}`);
-        if (firstNameText !== "Roman Dev-db1") {
-            throw new Error(`First Name mismatch! Expected "Roman Dev-db1", Found "${firstNameText}"`);
-        }
-
-        const lastNameText = await ActionHelper.getText(await ElementHelper.getElementByText("Isanin Dev-db1"));
-        console.log(`Verifying Last Name: ${lastNameText}`);
-        if (lastNameText !== "Isanin Dev-db1") {
-            throw new Error(`Last Name mismatch! Expected "Isanin Dev-db1", Found "${lastNameText}"`);
-        }
-*/
-        const usernameText = await ActionHelper.getText(await ElementHelper.getElementByText("kavithasub"));
+        const usernameText = await ActionHelper.getText(this.profileUsernameText);
         console.log(`Verifying Username: ${usernameText}`);
         if (usernameText !== "kavithasub") {
             throw new Error(`Username mismatch! Expected "kavithasub", Found "${usernameText}"`);
         }
 
-        console.log("Profile Verification Successful!");
+        console.log("✅ Profile Verification Successful!");
     }
 }
 
 module.exports = new ProfilePage();
-

@@ -1,6 +1,7 @@
 const LoginPage = require('../pages/LoginPage');
 const ProfilePage = require('../pages/ProfilePage');
-const config = require('../helpers/config');  // Import credentials
+const config = require('../helpers/config');
+const ActionHelper = require('../helpers/actionHelper');
 
 describe('Login and Profile Verification', () => {
     it('Should log in and verify profile details', async () => {
@@ -21,4 +22,5 @@ describe('Login and Profile Verification', () => {
         console.log("Verifying Profile Information...");
         await ProfilePage.verifyProfileDetails();
     });
-});
+
+}); 
