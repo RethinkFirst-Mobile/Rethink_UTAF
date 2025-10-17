@@ -1,5 +1,4 @@
-const ActionHelper = require('../helpers/actionHelper');
-
+import ActionHelper from '../helpers/actionHelper';
 
 class LoginPage {
     // iOS Selectors
@@ -15,18 +14,18 @@ class LoginPage {
     get androidPasswordField() { return $('//android.widget.EditText[@resource-id="password"]'); }
     get androidSignInBtn() { return $('//android.widget.Button[@resource-id="next"]'); }
 
-    async login(username, password) {
-        if (driver.isIOS) {
+    async login(username: string, password: string) {
+        if ((global as any).driver.isIOS) {
             await ActionHelper.clickElement(this.iosLoginBtn);
             console.log('Clicked Login button (iOS).');
 
             // Handle alert if present
             try {
-                if (await driver.getAlertText()) {
-                    const alertText = await driver.getAlertText();
-                    console.log(`📢 Alert detected: ${alertText}`);
-                    await driver.acceptAlert();
-                    console.log('✅ iOS alert accepted.');
+                if (await (global as any).driver.getAlertText()) {
+                    const alertText = await (global as any).driver.getAlertText();
+                    console.log(`Alert detected: ${alertText}`);
+                    await (global as any).driver.acceptAlert();
+                    console.log('iOS alert accepted.');
                 }
             } catch (e) {
                 console.log('No alert present.');
@@ -42,7 +41,7 @@ class LoginPage {
                 await this.iosTapOutside.click();
                 console.log('Tapped Company Logo to dismiss keyboard (iOS).');
             } catch (e) {
-                console.warn('⚠️ Could not tap Company Logo.');
+                console.warn('Could not tap Company Logo.');
             }
 
             await ActionHelper.clickElement(this.iosSignInBtn);
@@ -63,4 +62,4 @@ class LoginPage {
     }
 }
 
-module.exports = new LoginPage();
+export default new LoginPage();

@@ -1,9 +1,8 @@
-const CleverPage = require('../pages/CleverPage');
+import CleverPage from '../pages/CleverPage';
 
 describe('Clever Login', () => {
-    //this.timeout(120000);
     beforeEach(async () => {
-        await driver.pause(5000);
+        await (global as any).driver.pause(5000);
         await CleverPage.loginButton.waitForDisplayed({ timeout: 15000 });
     });
 

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "commonjs",
+    "lib": ["ES2021"],
+    "strict": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "checkJs": false,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+  "types": ["node", "mocha", "webdriverio"]
+  },
+  "include": ["test/**/*.ts", "test/**/*.js", "scripts/**/*.ts", "scripts/**/*.js", "wdio.conf.js"],
+  "exclude": ["node_modules", "dist"]
+}

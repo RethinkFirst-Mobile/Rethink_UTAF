@@ -1,7 +1,6 @@
-const LoginPage = require('../pages/LoginPage');
-const ProfilePage = require('../pages/ProfilePage');
-const config = require('../helpers/config');
-// const ActionHelper = require('../helpers/actionHelper');
+import LoginPage from '../pages/LoginPage';
+import ProfilePage from '../pages/ProfilePage';
+import config from '../helpers/config';
 
 describe('Login and Profile Verification', () => {
     it('Should log in and verify profile details', async () => {
@@ -12,7 +11,7 @@ describe('Login and Profile Verification', () => {
 
         // **Step 2: Wait for Home Page to Load**
         console.log("Waiting for home page to fully load...");
-        await driver.pause(5000);
+        await (global as any).driver.pause(5000);
         
         // **Step 3: Navigate to Profile**
         console.log("Navigating to Profile Page...");
@@ -22,5 +21,4 @@ describe('Login and Profile Verification', () => {
         console.log("Verifying Profile Information...");
         await ProfilePage.verifyProfileDetails();
     });
-
-}); 
+});

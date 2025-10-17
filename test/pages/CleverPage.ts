@@ -1,5 +1,5 @@
-const ActionHelper = require('../helpers/actionHelper');
-const config = require('../helpers/config');
+import ActionHelper from '../helpers/actionHelper';
+import config from '../helpers/config';
 
 class CleverPage {
     get loginButton() { return $('//XCUIElementTypeButton[@name="Log in"]'); }
@@ -49,8 +49,7 @@ class CleverPage {
         await this.cleverSubmitButton.click();
 
         await this.sessionHistory.waitForDisplayed({ timeout: 30000 });
-
-    }       
+    }
 }
 
-module.exports = new CleverPage();
+export default new CleverPage();

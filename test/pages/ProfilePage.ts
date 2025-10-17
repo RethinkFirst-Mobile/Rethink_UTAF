@@ -1,4 +1,4 @@
-const ActionHelper = require('../helpers/actionHelper');
+import ActionHelper from '../helpers/actionHelper';
 
 class ProfilePage {
     // iOS selectors
@@ -14,7 +14,7 @@ class ProfilePage {
         return $('//*[contains(@text, "kavithasub") or @name="kavithasub"]');}
 
     async navigateToProfile() {
-        if (driver.isIOS) {
+        if ((global as any).driver.isIOS) {
             await ActionHelper.clickElement(this.iosMoreBtn);
             console.log("Clicked 'More' button (iOS).");
 
@@ -36,8 +36,8 @@ class ProfilePage {
             throw new Error(`Username mismatch! Expected "kavithasub", Found "${usernameText}"`);
         }
 
-        console.log("✅ Profile Verification Successful!");
+        console.log("Profile Verification Successful!");
     }
 }
 
-module.exports = new ProfilePage();
+export default new ProfilePage();

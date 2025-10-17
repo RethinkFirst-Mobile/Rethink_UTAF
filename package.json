@@ -11,13 +11,36 @@
     "allure-commandline": "^2.33.0",
     "appium": "^3.1.0",
     "appium-uiautomator2-driver": "^4.0.0",
-    "appium-xcuitest-driver": "^10.2.2"
-  ,
-    "eslint": "^8.50.0"
+    "appium-xcuitest-driver": "^10.2.2",
+    "eslint": "^8.50.0",
+    "husky": "^8.0.0",
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
+    "lint-staged": "^14.0.0",
+    "@wdio/browserstack-service": "^9.7.2",
+    "axios": "^1.6.0",
+    "typescript": "^5.5.0",
+    "ts-node": "^10.9.1",
+    "@types/node": "^20.5.1",
+    "@types/mocha": "^10.0.1",
+    "@typescript-eslint/parser": "^6.8.0",
+    "@typescript-eslint/eslint-plugin": "^6.8.0"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js",
-    "lint": "eslint . --ext .js",
-    "lint:fix": "eslint . --ext .js --fix"
+  "wdio": "node -r ts-node/register ./node_modules/.bin/wdio run ./wdio.conf.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "upload:browserstack": "node ./scripts/upload-to-browserstack.js",
+    "prepare": "husky install",
+    "ci": "npm run lint",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "eslint . --ext .js,.ts --fix"
+  }
+
+  ,"lint-staged": {
+    "**/*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
