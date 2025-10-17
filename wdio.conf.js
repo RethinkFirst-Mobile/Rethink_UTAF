@@ -26,8 +26,8 @@ const iosCaps = {
 
 // Assemble capabilities based on PLATFORM env var
 let capabilities = [];
-if (!platform || platform === 'android') capabilities.push(androidCaps);
-if (!platform || platform === 'ios') capabilities.push(iosCaps);
+if (!platform || platform === 'android') { capabilities.push(androidCaps); }
+if (!platform || platform === 'ios') { capabilities.push(iosCaps); }
 
 exports.config = {
     runner: 'local',

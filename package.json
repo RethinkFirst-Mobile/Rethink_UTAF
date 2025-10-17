@@ -9,11 +9,15 @@
     "@wdio/mocha-framework": "^9.7.2",
     "@wdio/spec-reporter": "^9.6.3",
     "allure-commandline": "^2.33.0",
-    "appium": "^2.17.1",
+    "appium": "^3.1.0",
     "appium-uiautomator2-driver": "^4.0.0",
-    "appium-xcuitest-driver": "^9.0.0"
+    "appium-xcuitest-driver": "^10.2.2"
+  ,
+    "eslint": "^8.50.0"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix"
   }
 }

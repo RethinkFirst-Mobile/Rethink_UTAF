@@ -1,0 +1,7 @@
+node_modules/
+allure-results/
+reports/
+.idea/
+.vscode/
+coverage/
+*.min.js

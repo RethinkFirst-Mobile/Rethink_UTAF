@@ -1,7 +1,7 @@
 const LoginPage = require('../pages/LoginPage');
 const ProfilePage = require('../pages/ProfilePage');
 const config = require('../helpers/config');
-const ActionHelper = require('../helpers/actionHelper');
+// const ActionHelper = require('../helpers/actionHelper');
 
 describe('Login and Profile Verification', () => {
     it('Should log in and verify profile details', async () => {
