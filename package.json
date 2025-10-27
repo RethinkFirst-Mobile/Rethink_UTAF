@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "description": "E2E Test Automation Framework setup for Cross Platforms, Web, Mobile and API. Current specific to Mobile, can be expanded to web later when/if needed",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/retink-bh-mobile/*"
-    ]
-  },
   "scripts": {
     "upload:browserstack": "npm run upload:browserstack --workspace packages/test",
     "clean": "npx lerna run clean --parallel && npx shx rm -rf node_modules",
@@ -93,6 +88,11 @@
   "contributors": [
     "Nikil Gunda <nikil.gunda@rethinkfirst.com>"
   ],
+    "workspaces": {
+    "packages": [
+      "packages/retink-bh-mobile/*"
+    ]
+  },
   "volta": {
     "node": "22.16.0",
     "npm": "10.9.2"
