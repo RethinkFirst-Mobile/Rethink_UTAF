@@ -3,7 +3,7 @@ import ActionHelper from '../helpers/actionHelper';
 
 class LoginPage {
     // iOS Selectors
-    get iosLoginBtn() { return $('~Log in'); }
+    get iosLoginBtn() { return $('~Log in');   }
     get iosUsernameField() { return $('//XCUIElementTypeTextField[@name="Username or Email"]'); }
     get iosPasswordField() { return $('//XCUIElementTypeSecureTextField[@name="Password"]'); }
     get iosSignInBtn() { return $('//XCUIElementTypeButton[@name="Sign in"]'); }
