@@ -13,7 +13,8 @@
     "prettier": "cross-env npx prettier --config .prettierrc --write '**/*.ts'",
     "setup": "npm install --legacy-peer-deps --hoist",
     "tsc": "npx cross-env npx tsc -p tsconfig.json",
-    "wdio": "npm exec wdio --workspace packages/test -- run packages/test/wdio.conf.ts"
+    "wdio": "npm exec wdio --workspace packages/test -- run packages/test/wdio.conf.ts",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
@@ -88,7 +89,7 @@
   "contributors": [
     "Nikil Gunda <nikil.gunda@rethinkfirst.com>"
   ],
-    "workspaces": {
+  "workspaces": {
     "packages": [
       "packages/retink-bh-mobile/*"
     ]
