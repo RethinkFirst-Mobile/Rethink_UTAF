@@ -1,4 +1,4 @@
-import CleverPage from '../pages/CleverPage';
+import CleverPage from '../../../pages/CleverPage';
 
 describe('Clever Login', () => {
     beforeEach(async () => {

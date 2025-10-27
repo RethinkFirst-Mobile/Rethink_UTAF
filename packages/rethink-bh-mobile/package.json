@@ -1,0 +1,11 @@
+{
+  "name": "rethink-bh-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+      "clean": "npx shx rm -rf tmp node_modules",
+      "hello": "echo Hey there! Im printing from $npm_package_name"
+  },
+  "dependencies": {}
+}

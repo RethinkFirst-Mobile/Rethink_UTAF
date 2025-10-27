@@ -1,7 +1,15 @@
 node_modules/
-allure-results/
 reports/
 .idea/
 .vscode/
 coverage/
 *.min.js
+!.*.json
+/**/node_modules/*
+node_modules
+package-lock.json
+commitlint.config.js
+**/allure-report
+dist/
+build/
+out/

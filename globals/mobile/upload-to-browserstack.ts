@@ -28,7 +28,7 @@ async function upload(): Promise<void> {
   try {
     const url = 'https://api-cloud.browserstack.com/app-automate/upload';
     const resp = await axios.post(url, fs.createReadStream(absolute), {
-      auth: { username: user, password: key },
+      auth: { username: user!, password: key! },
       headers: {
         'Content-Type': 'application/octet-stream'
       },

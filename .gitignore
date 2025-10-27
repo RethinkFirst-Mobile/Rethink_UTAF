@@ -1,5 +1,51 @@
-node_modules/
+.github
 .DS_Store
 *.apk
 allure-results/
 allure-report/
+lerna-debug.log
+!.husky
+!globals/*
+packages/*/tmp
+packages/*/.env
+packages/*/_output
+packages/*/output
+packages/*/node_modules
+packages/**/undefined
+packages/**/.build
+packages/**/.wdlogs
+packages/**/tmp
+packages/**/allure-report
+packages/**/allure-results
+.build
+play.ts
+package-lock.json
+packages/**/Screenshots
+
+# dotenv environment variables file
+.env
+.env.test
+.env.production
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/example-launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
+
+# Dependency directories
+node_modules/
+jspm_packages/
+node_modules

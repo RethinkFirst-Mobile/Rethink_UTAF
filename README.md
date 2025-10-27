@@ -1,6 +1,6 @@
 📌 README.md – Appium + WebdriverIO Mobile Automation
-# 🚀 WebdriverIO + Appium Mobile Automation
-This project sets up **WebdriverIO** with **Appium** to automate mobile applications on both **iOS** and **Android** devices.
+# 🚀 WebdriverIO + Appium Mobile Automation Monorepo
+This monorepo sets up **WebdriverIO** with **Appium** to automate mobile applications on both **iOS** and **Android** devices. It uses npm workspaces to manage multiple packages for apps, tests, and shared code.
 ---
 ## 📌 Prerequisites
 Before setting up WebdriverIO and Appium, ensure you have the following installed:
@@ -24,10 +24,21 @@ brew install node
 
 This repository contains a WebdriverIO + Appium test suite for the Rethink mobile app. The configuration supports running tests locally (using a local Appium server) and on cloud providers such as BrowserStack and Bitbar.
 
-## What this repo includes
-- WebdriverIO test setup (`wdio.conf.js`)
-- Example tests in `test/specs/`
-- Page objects in `test/pages/`
+## Monorepo Structure
+
+```
+apps/
+	mobile/           # Mobile app code (if present)
+packages/
+	test/             # All test automation (specs, pages, helpers, features, scripts)
+	shared/           # Shared code/types (if needed)
+```
+
+### What this repo includes
+- WebdriverIO test setup (`packages/test/wdio.conf.ts`)
+- Example tests in `packages/test/specs/`
+- Page objects in `packages/test/pages/`
+- Step definitions and features in `packages/test/features/`
 - ESLint integration and lint scripts
 - Commit message linting via Commitlint + Husky (Conventional Commits)
 
@@ -36,7 +47,7 @@ This repository contains a WebdriverIO + Appium test suite for the Rethink mobil
 - npm
 - For local runs: Appium and device/emulator configured
 
-Install dependencies:
+Install dependencies (from root):
 
 ```bash
 npm install
@@ -70,16 +81,16 @@ Other helpful env vars:
 Start Appium (if not already running) or just run the npm script (the project includes Appium in devDependencies and `wdio` script will start Appium when PROVIDER=local):
 
 ```bash
-# default local run
-npm run wdio
+# default local run (from root)
+npm run wdio --workspace packages/test
 
 # specify platform (optional)
 export PLATFORM=android
-npm run wdio
+npm run wdio --workspace packages/test
 ```
 
 ### BrowserStack
-1. Upload your app to BrowserStack (follow BrowserStack docs) and get the `bs://...` app id.
+1. Upload your app to BrowserStack (see `packages/test/scripts/upload-to-browserstack.ts`) and get the `bs://...` app id.
 2. Set env variables and run:
 
 ```bash
@@ -87,7 +98,7 @@ export PROVIDER=browserstack
 export BROWSERSTACK_USER=<your_user>
 export BROWSERSTACK_KEY=<your_key>
 export ANDROID_APP=bs://<uploaded-android-id>
-npm run wdio
+npm run wdio --workspace packages/test
 ```
 
 ### Bitbar
@@ -99,7 +110,7 @@ export PROVIDER=bitbar
 export BITBAR_USER=<your_user>
 export BITBAR_KEY=<your_key>
 export ANDROID_APP=<bitbar-app-id-or-url>
-npm run wdio
+npm run wdio --workspace packages/test
 ```
 
 Notes on cloud runs:
@@ -107,7 +118,7 @@ Notes on cloud runs:
 - You may need to adjust capability options for specific device models and OS versions. Use `PROVIDER` plus `PLATFORM` to pick capabilities.
 
 ## Linting
-- Run ESLint across the project:
+- Run ESLint across the project (from root):
 
 ```bash
 npm run lint
@@ -134,6 +145,17 @@ Commit messages are validated by Commitlint (Conventional Commits) via a Husky `
 - Add `@wdio/browserstack-service` for managed BrowserStack integration.
 - Add `lint-staged` + Husky `pre-commit` to lint staged files before commit.
 - Add CI job to run lint + tests and verify commit messages on PRs.
+
+---
+## Monorepo Usage
+
+- All test automation is now in `packages/test/`.
+- Shared code can go in `packages/shared/`.
+- App code (if present) goes in `apps/mobile/`.
+- Use npm workspaces for dependency management and scripts.
+
+---
+If you'd like, I can add a `CONTRIBUTING.md` with commit message templates and a sample `.env.example` for easy local setup. Which would you prefer next?
 
 ---
 If you'd like, I can add a `CONTRIBUTING.md` with commit message templates and a sample `.env.example` for easy local setup. Which would you prefer next?

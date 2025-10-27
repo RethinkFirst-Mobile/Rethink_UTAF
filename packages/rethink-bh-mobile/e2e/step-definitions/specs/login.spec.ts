@@ -1,6 +1,6 @@
-import LoginPage from '../pages/LoginPage';
-import ProfilePage from '../pages/ProfilePage';
-import config from '../helpers/config';
+import LoginPage from '../../../pages/LoginPage';
+import ProfilePage from '../../../pages/ProfilePage';
+import config from '../../../../../globals/mobile/config';
 
 describe('Login and Profile Verification', () => {
     it('Should log in and verify profile details', async () => {

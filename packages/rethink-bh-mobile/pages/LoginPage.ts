@@ -1,3 +1,4 @@
+/// <reference path="../global.d.ts" />
 import ActionHelper from '../helpers/actionHelper';
 
 class LoginPage {

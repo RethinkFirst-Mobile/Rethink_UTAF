@@ -1,5 +1,6 @@
+/// <reference path="../global.d.ts" />
 import ActionHelper from '../helpers/actionHelper';
-import config from '../helpers/config';
+import config from '../../../globals/mobile/config';
 
 class CleverPage {
     get loginButton() { return $('//XCUIElementTypeButton[@name="Log in"]'); }

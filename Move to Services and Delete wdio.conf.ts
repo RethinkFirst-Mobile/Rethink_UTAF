@@ -51,7 +51,7 @@ if (!platform || platform === 'ios') { capabilities.push(iosCaps); }
 
 export const config: any = {
     runner: 'local',
-    specs: ['./test/specs/**/*.js'],
+    specs: ['./features/**/*.feature'],
     exclude: [],
     maxInstances: 1,
     capabilities,
@@ -78,10 +78,11 @@ export const config: any = {
         }]
     ],
 
-    framework: 'mocha',
-    mochaOpts: {
-        ui: 'bdd',
-        timeout: 120000
+    framework: 'cucumber',
+    cucumberOpts: {
+        require: ['./features/step-definitions/*.ts'],
+        timeout: 120000,
+        // Add more options as needed
     },
 
     beforeSession(config1: any, capabilities1: any, specs: string[]) {

@@ -1,4 +1,5 @@
-import ActionHelper from '../helpers/actionHelper';
+/// <reference path="../global.d.ts" />
+import ActionHelper from '../../../globals/mobile/actionHelper';
 
 class ProfilePage {
     // iOS selectors
