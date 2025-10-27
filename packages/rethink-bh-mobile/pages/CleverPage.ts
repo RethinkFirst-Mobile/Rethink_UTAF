@@ -1,5 +1,5 @@
 /// <reference path="../global.d.ts" />
-import ActionHelper from '../helpers/actionHelper';
+import ActionHelper from '../../../globals/mobile/actionHelper';
 import config from '../../../globals/mobile/config';
 
 class CleverPage {

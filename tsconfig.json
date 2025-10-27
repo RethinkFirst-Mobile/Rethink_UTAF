@@ -5,6 +5,7 @@
     "module": "CommonJs",
     "outDir": "./.build/",
     "strict": true,
+    "baseUrl": ".",
     "allowJs": true,
     "types": [
       "node",
