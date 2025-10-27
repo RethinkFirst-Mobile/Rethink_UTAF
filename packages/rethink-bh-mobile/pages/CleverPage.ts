@@ -3,7 +3,7 @@ import ActionHelper from '../../../globals/mobile/actionHelper';
 import config from '../../../globals/mobile/config';
 
 class CleverPage {
-    get loginButton() { return $('//XCUIElementTypeButton[@name="Log in"]');    }
+    get loginButton() { return $('//XCUIElementTypeButton[@name="Log in"]'); }
     get cleverLoginButton() { return $('//XCUIElementTypeButton[@name="Clever"]'); }
     get districtInput() { return $('//XCUIElementTypeOther[@value="\n"]'); }
     get districtSuggestion() { return $('//XCUIElementTypeOther[contains(@value,"Sandbox district")]'); }
