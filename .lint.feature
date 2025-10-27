@@ -1,5 +1,3 @@
-# Linting configuration for Gherkin feature files
-# Need to check and add more rules as necessary
 {
 "no-unnamed-features": "on",
 "max-scenarios-per-file": ["on", {"maxScenarios": 38, "countOutlineExamples": true}],
