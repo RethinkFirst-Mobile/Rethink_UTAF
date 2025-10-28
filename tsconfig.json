@@ -14,6 +14,7 @@
       "@wdio/mocha-framework",
       "@wdio/cucumber-framework",
       "@wdio/shared-store-service",
+      "@wdio/appium-service",
       "webdriverio",
       "expect-webdriverio",
       "@cucumber/cucumber",
