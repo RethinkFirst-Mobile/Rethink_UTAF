@@ -15,7 +15,10 @@
       "@wdio/shared-store-service",
       "webdriverio",
       "expect-webdriverio",
-      "@cucumber/cucumber"
+      "@cucumber/cucumber",
+      "appium",
+      "appium-uiautomator2-driver",
+      "appium-xcuitest-driver",
     ],
     "esModuleInterop": true,
     "skipLibCheck": true,

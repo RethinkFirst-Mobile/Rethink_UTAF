@@ -6,8 +6,8 @@ import { Seconds } from '../enums/seconds.enum';
 export class WebPage {
   async clearBrowserStorage() {
     await browser.deleteAllCookies();
-    await browser.clearSessionStorage();
-    await browser.clearLocalStorage();
+    await browser.execute('window.sessionStorage.clear();');
+    await browser.execute('window.localStorage.clear();');
   }
 
   async click(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
@@ -77,11 +77,8 @@ export class WebPage {
 
   async getSelectedOption(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
-    const selectedOption = await element.$('.//option[@selected="selected"]');
-    if (await selectedOption.isDisplayed()) {
-      return this.getText(selectedOption, timeoutValue);
-    }
-    return undefined;
+    const selectedOptionValue = await element.$('.//option[@selected="selected"]').getText();
+    return selectedOptionValue;
   }
 
   async getCheckBoxStatus(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
@@ -95,7 +92,7 @@ export class WebPage {
     await this.waitForPresence(element, timeoutValue);
     // return (await element.$$('option')).map(async (el) => el.getText());
     const optionselement = await element.$$('option');
-    for (let i = 0; i < await optionselement.length; i += 1) {
+    for (let i = 0; i < (await optionselement.length); i += 1) {
       ddOptions.push(await optionselement[i].getText());
     }
     return ddOptions;
@@ -191,7 +188,6 @@ export class WebPage {
 
   async refreshBrowser() {
     await browser.refresh();
-    await this.waitForAjaxCall();
   }
 
   async scrollToElement(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
@@ -331,11 +327,7 @@ export class WebPage {
     });
   }
 
-  async waitForElementToHaveValue(
-    element: WebdriverIO.Element,
-    expectedValue: string,
-    timeoutValue = Seconds.XXL,
-  ) {
+  async waitForElementToHaveValue(element: WebdriverIO.Element, expectedValue: string, timeoutValue = Seconds.XXL) {
     await browser.waitUntil(async () => (await element.getValue()).includes(expectedValue), {
       timeout: timeoutValue,
       timeoutMsg: `Exception : waitForElementToHaveValue - value (${expectedValue}) did not appear on element (${element.selector}) even after timeout of ${timeoutValue} Seconds`,

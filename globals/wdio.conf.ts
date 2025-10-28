@@ -59,26 +59,21 @@ export const config: WebdriverIO.Config = {
         language: 'en',
       },
     ],
-    ['allure', {
+    [
+      'allure',
+      {
         outputDir: 'allure-reports',
         useCucumberStepReporter: true,
         disableMochaHooks: false,
         addConsoleLogs: true, // Attach console logs to reports
-      
-        reportedEnvironmentVars: {
-           'NODE_VERSION': process.version,
-           'BROWSER': process.env.BROWSER,
-           'Device': process.env.DEVICE_NAME,
-           'PLATFORM': process.env.PLATFORM_NAME,
-        }
-    }]
-  ],
 
-  autoCompileOpts: {
-    autoCompile: true,
-    tsNodeOpts: {
-      transpileOnly: true,
-      project: `${root}/tsconfig.json`,
-    },
-  },
+        reportedEnvironmentVars: {
+          NODE_VERSION: process.version,
+          BROWSER: process.env.BROWSER,
+          Device: process.env.DEVICE_NAME,
+          PLATFORM: process.env.PLATFORM_NAME,
+        },
+      },
+    ],
+  ],
 };

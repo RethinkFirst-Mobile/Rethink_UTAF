@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
-import execa from 'execa';
+import { execa } from 'execa';
 import fs from 'fs-extra';
 import path from 'path';
 import logger, { Logger } from '@wdio/logger';
