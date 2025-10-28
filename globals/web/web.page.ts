@@ -385,7 +385,7 @@ export class WebPage {
     dateVal.setDate(dateVal.getDate() + addDays);
     dateVal.setMonth(dateVal.getMonth() + addMonths);
     dateVal.setFullYear(dateVal.getFullYear() + addYears);
-    return format(dateVal, dateFormat) as string;
+    return format(dateVal, dateFormat);
   }
 
   async closeBrowser() {

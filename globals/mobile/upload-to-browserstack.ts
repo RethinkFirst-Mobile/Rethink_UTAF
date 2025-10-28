@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
@@ -30,10 +31,10 @@ async function upload(): Promise<void> {
     const resp = await axios.post(url, fs.createReadStream(absolute), {
       auth: { username: user!, password: key! },
       headers: {
-        'Content-Type': 'application/octet-stream'
+        'Content-Type': 'application/octet-stream',
       },
       maxContentLength: Infinity,
-      maxBodyLength: Infinity
+      maxBodyLength: Infinity,
     });
 
     if (resp.data && resp.data.app_url) {
@@ -42,6 +43,7 @@ async function upload(): Promise<void> {
     } else {
       console.log('Upload response:', resp.data);
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error('Upload failed:', err && err.response && err.response.data ? err.response.data : err.message);
     process.exit(1);

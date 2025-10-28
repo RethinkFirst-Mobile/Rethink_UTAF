@@ -1,3 +1,1 @@
-export class AndroidBasePage {
-
-}
+export class AndroidBasePage {}

@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "target": "ESNext",
     "module": "CommonJs",
     "outDir": "./.build/",
+    "removeComments": true,
     "strict": true,
     "baseUrl": ".",
     "allowJs": true,
@@ -18,7 +19,7 @@
       "@cucumber/cucumber",
       "appium",
       "appium-uiautomator2-driver",
-      "appium-xcuitest-driver",
+      "appium-xcuitest-driver"
     ],
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -27,6 +28,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true 
+    "forceConsistentCasingInFileNames": true
   }
 }

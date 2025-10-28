@@ -7,5 +7,5 @@ export const enum Seconds {
   L = 90,
   XL = 120,
   XXL = 180,
-  XXXL = 300
+  XXXL = 300,
 }

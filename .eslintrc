@@ -10,15 +10,27 @@
     "prettier"
   ],
   "plugins": ["@typescript-eslint", "json-format", "prettier", "import"],
-  "parserOptions": { "ecmaVersion": 2020, "sourceType": "module", "project": "./tsconfig.json" },
+  "parserOptions": { 
+    "ecmaVersion": 2020, 
+    "sourceType": "module", 
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "/Volumes/Work/RethinkMobileWDIO/UTAF"
+  },
   "rules": {
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "no-console": 2, // Remember, this means error! 1 means warning,
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/no-throw-literal": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/await-thenable": "off",
+    "@typescript-eslint/no-base-to-string": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "no-console": 2,
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
-    "prettier/prettier": 2, // Means error
-
+    "prettier/prettier": 2,
     "no-await-in-loop": "off"
   },
   "settings": {

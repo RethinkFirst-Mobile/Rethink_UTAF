@@ -4,17 +4,17 @@
   "description": "E2E Test Automation Framework setup for Cross Platforms, Web, Mobile and API. Current specific to Mobile, can be expanded to web later when/if needed",
   "private": true,
   "scripts": {
-    "upload:browserstack": "npm run upload:browserstack --workspace packages/test",
     "clean": "npx lerna run clean --parallel && npx shx rm -rf node_modules",
     "commit": "npx commit",
     "hello": "npx lerna run hello --parallel",
     "postinstall": "husky install",
     "lint": "npm run tsc && npx cross-env npx eslint . --ext .json,.eslintrc,.eslintignore,.js,.ts --fix && npx cross-env npx gherkin-lint -c .lint.feature -i **/node_modules/**/*.feature && npm run prettier",
+    "prepare": "husky",
     "prettier": "cross-env npx prettier --config .prettierrc --write '**/*.ts'",
     "setup": "npm install --legacy-peer-deps --hoist",
     "tsc": "npx cross-env npx tsc -p tsconfig.json",
-    "wdio": "npm exec wdio --workspace packages/test -- run packages/test/wdio.conf.ts",
-    "prepare": "husky"
+    "upload:browserstack": "npm run upload:browserstack --workspace packages/test",
+    "wdio": "npm exec wdio --workspace packages/test -- run packages/test/wdio.conf.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
@@ -81,13 +81,13 @@
     "yargs": "^18.0.0"
   },
   "license": "UNLICENSED",
+  "author": "Nikil Gunda <nikil.gunda@rethinkfirst.com>",
   "keywords": [
     "UTAF",
     "automation",
     "framework",
     "rethinkfirst"
   ],
-  "author": "Nikil Gunda <nikil.gunda@rethinkfirst.com>",
   "contributors": [
     "Nikil Gunda <nikil.gunda@rethinkfirst.com>"
   ],

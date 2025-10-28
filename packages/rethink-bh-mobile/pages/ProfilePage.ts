@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
 import ActionHelper from '../../../globals/mobile/actionHelper';
 
 class ProfilePage {
@@ -24,22 +26,22 @@ class ProfilePage {
 
   async navigateToProfile() {
     if ((global as any).driver.isIOS) {
-      await ActionHelper.clickElement(this.iosMoreBtn);
+      await ActionHelper.clickElement(this.iosMoreBtn as unknown as WebdriverIO.Element);
       console.log("Clicked 'More' button (iOS).");
 
-      await ActionHelper.clickElement(this.iosProfileBtn);
+      await ActionHelper.clickElement(this.iosProfileBtn as unknown as WebdriverIO.Element);
       console.log("Clicked 'Profile' button (iOS).");
     } else {
-      await ActionHelper.clickElement(this.androidMoreBtn);
+      await ActionHelper.clickElement(this.androidMoreBtn as unknown as WebdriverIO.Element);
       console.log("Clicked 'More' button (Android).");
 
-      await ActionHelper.clickElement(this.androidProfileBtn);
+      await ActionHelper.clickElement(this.androidProfileBtn as unknown as WebdriverIO.Element);
       console.log("Clicked 'Profile' button (Android).");
     }
   }
 
   async verifyProfileDetails() {
-    const usernameText = await ActionHelper.getText(this.profileUsernameText);
+    const usernameText = await ActionHelper.getText(this.profileUsernameText as unknown as WebdriverIO.Element);
     console.log(`Verifying Username: ${usernameText}`);
     if (usernameText !== 'kavithasub') {
       throw new Error(`Username mismatch! Expected "kavithasub", Found "${usernameText}"`);

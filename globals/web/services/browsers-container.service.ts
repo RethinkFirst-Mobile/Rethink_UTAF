@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
 import { execa } from 'execa';

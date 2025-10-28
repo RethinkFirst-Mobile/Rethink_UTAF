@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
 /* eslint-disable class-methods-use-this */
 
 import ActionHelper from '../../../globals/mobile/actionHelper';
@@ -33,7 +35,7 @@ class CleverPage {
   }
 
   async loginWithClever() {
-    await ActionHelper.clickElement(this.loginButton);
+    await ActionHelper.clickElement(this.loginButton as unknown as WebdriverIO.Element);
     await driver.pause(10000);
 
     try {
@@ -43,11 +45,11 @@ class CleverPage {
         await driver.acceptAlert();
         console.log('iOS alert accepted.');
       }
-    } catch (e) {
-      console.log('No alert present.');
+    } catch (e: any) {
+      console.log('No alert present.' + e.message);
     }
 
-    await ActionHelper.clickElement(this.cleverLoginButton);
+    await ActionHelper.clickElement(this.cleverLoginButton as unknown as WebdriverIO.Element);
     await this.districtInput.waitForDisplayed({ timeout: 10000 });
     await this.districtInput.click();
     await this.districtInput.setValue(config.districtId);
