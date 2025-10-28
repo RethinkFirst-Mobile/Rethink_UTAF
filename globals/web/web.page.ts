@@ -4,50 +4,50 @@ import { format } from 'date-fns';
 import { Seconds } from '../enums/seconds.enum';
 
 export class WebPage {
-  async clearBrowserStorage() {
+  async clearBrowserStorage(): Promise<void> {
     await browser.deleteAllCookies();
     await browser.execute('window.sessionStorage.clear();');
     await browser.execute('window.localStorage.clear();');
   }
 
-  async click(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async click(element: WebdriverIO.Element, timeoutValue = Seconds.XXL): Promise<void> {
     await this.waitForPresence(element, timeoutValue);
     await this.waitForClickable(element, timeoutValue);
     await element.click();
   }
 
-  async clearInput(element: WebdriverIO.Element) {
+  async clearInput(element: WebdriverIO.Element): Promise<void> {
     await element.clearValue();
   }
 
-  async clickElementUsingJS(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async clickElementUsingJS(element: WebdriverIO.Element, timeoutValue = Seconds.XXL): Promise<void> {
     await this.waitForPresence(element, timeoutValue);
     await this.waitForClickable(element, timeoutValue);
     await browser.execute('return arguments[0].click()', element);
   }
 
-  async getTextUsingJS(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async getTextUsingJS(element: WebdriverIO.Element, timeoutValue = Seconds.XXL): Promise<string> {
     await this.waitForPresence(element, timeoutValue);
     await this.waitForClickable(element, timeoutValue);
     return browser.execute('return arguments[0].value', element);
   }
 
-  async clearValueUsingJS(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async clearValueUsingJS(element: WebdriverIO.Element, timeoutValue = Seconds.XXL): Promise<void> {
     await this.waitForPresence(element, timeoutValue);
     await this.waitForClickable(element, timeoutValue);
     return browser.execute(`arguments[0].value =''`, element);
   }
 
-  async deleteAllCookies() {
+  async deleteAllCookies(): Promise<void> {
     await browser.deleteAllCookies();
   }
 
-  async getElementsCount(elements: WebdriverIO.ElementArray, timeoutValue = Seconds.XXL) {
+  async getElementsCount(elements: WebdriverIO.ElementArray, timeoutValue = Seconds.XXL): Promise<number> {
     await this.waitForPresence(elements[0], timeoutValue);
     return elements.length;
   }
 
-  async getAttributeValue(element: WebdriverIO.Element, attributeName: string) {
+  async getAttributeValue(element: WebdriverIO.Element, attributeName: string): Promise<string> {
     await element.isExisting();
     return element.getAttribute(attributeName);
   }
@@ -57,7 +57,7 @@ export class WebPage {
     return element.getCSSProperty(cssValue);
   }
 
-  async getUrl() {
+  async getUrl(): Promise<string> {
     return browser.getUrl();
   }
 
