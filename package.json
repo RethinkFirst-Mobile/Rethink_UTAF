@@ -4,8 +4,8 @@
   "description": "E2E Test Automation Framework setup for Cross Platforms, Web, Mobile and API. Current specific to Mobile, can be expanded to web later when/if needed",
   "private": true,
   "scripts": {
-    "allure-report": "node_modules/.bin/allure generate --clean ./test/reports/allure-results && allure open -p 5050",
-    "allure:history": "mkdir -p allure-report/history ./test/reports/allure-results/history && cp -a allure-report/history ./test/reports/allure-results/",
+    "allure-report": "node_modules/.bin/allure generate --clean packages/rethink-bh-mobile/tmp/allure-reports && allure open -p 5050",
+    "allure:history": "mkdir -p allure-report/history packages/rethink-bh-mobile/tmp/allure-reports && cp -a allure-report/history packages/rethink-bh-mobile/tmp/allure-reports/",
     "clean": "npx lerna run clean --parallel && npx shx rm -rf node_modules",
     "commit": "npx commit",
     "hello": "npx lerna run hello --parallel",

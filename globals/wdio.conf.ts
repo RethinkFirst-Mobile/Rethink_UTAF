@@ -62,16 +62,16 @@ export const config: WebdriverIO.Config = {
     [
       'allure',
       {
-        outputDir: 'allure-reports',
+        outputDir: `${root}/packages/${process.env.TEAM}/tmp/allure-reports`,
+        disableWebdriverStepsReporting: true,
         useCucumberStepReporter: true,
-        disableMochaHooks: false,
         addConsoleLogs: true, // Attach console logs to reports
 
         reportedEnvironmentVars: {
-          NODE_VERSION: process.version,
-          BROWSER: process.env.BROWSER,
-          Device: process.env.DEVICE_NAME,
-          PLATFORM: process.env.PLATFORM_NAME,
+          NODE_VERSION: `${process.version}`,
+          BROWSER: `${process.env.BROWSER}`,
+          Device: `${process.env.DEVICE_NAME}`,
+          PLATFORM: `${process.env.PLATFORM_NAME}`,
         },
       },
     ],

@@ -1,5 +1,5 @@
 import merge from 'deepmerge';
-import { config as baseConfig } from '../wdio.conf';
+import { config as baseConfig } from '../../wdio.conf';
 
 export const config: WebdriverIO.Config = merge(baseConfig, {
   // =====================

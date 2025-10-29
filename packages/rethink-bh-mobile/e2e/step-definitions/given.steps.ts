@@ -1,11 +1,9 @@
 import { Given } from '@wdio/cucumber-framework';
-
+import allureReporter from '@wdio/allure-reporter';
 import LoginPage from '../../pages/login.page';
 
-const pages = {
-  login: LoginPage,
-};
-
-Given(/^I am on the (\w+) page$/, async (page: keyof typeof pages) => {
-  await pages[page].open();
+Given('I am on the login page', async () => {
+  allureReporter.addFeature('Login Feature');
+  allureReporter.addStory('Validating Login Page Navigation');
+  await LoginPage.open();
 });

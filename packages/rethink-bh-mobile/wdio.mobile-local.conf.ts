@@ -1,41 +1,30 @@
 import merge from 'deepmerge';
-import { config as baseConfig } from '../globals/wdio.conf';
+import { config as baseConfig } from '../../globals/mobile/configs/wdio.mobile-local.conf';
 
 export const config: WebdriverIO.Config = merge(baseConfig, {
-  host: '0.0.0.0',
-  port: 4723,
-  //path: '/wd/hub',
-  services: [
-    [
-      'appium',
-      {
-        // For options see
-        // https://github.com/webdriverio/webdriverio/tree/master/packages/wdio-appium-service
-        args: {
-          // For arguments see
-          // https://github.com/webdriverio/webdriverio/tree/master/packages/wdio-appium-service
-        },
-        command: 'appium',
-      },
-    ],
-  ],
+  // =====================
+  // Services  Configuration
+  // =====================
+  services: [],
 
   // For iOS bases mobile device
   capabilities: [
     {
-      appiumVersion: '1.6.5',
-      automationName: 'XCUITest',
       platformName: 'iOS',
-      //platformVersion: '9.0',
-      deviceName: 'iPhone Simulator',
-      //deviceName: 'iPhone 6s',
       browserName: 'Safari',
-      //orientation: 'PORTRAIT',
-      //nativeInstrumentsLib: true,
-      //isolateSimDevice: true,
-      clearSystemFiles: true,
-      //commandTimeout: '7200',
-      //app: APP_PATH
+      'appium:options': {
+        automationName: 'XCUITest',
+        deviceName: 'iPhone 16 Pro',
+        platformVersion: '18.5',
+        clearSystemFiles: true,
+        appiumVersion: '3.1.0',
+        udid: '75222290-4700-4B05-A710-7716F11B9EFE', // Specific simulator ID
+        //orientation: 'PORTRAIT',
+        //nativeInstrumentsLib: true,
+        //isolateSimDevice: true,
+        //commandTimeout: '7200',
+        app: 'packages/rethink-bh-mobile/resources/Big Calculator 1.3.ipa',
+      },
     },
   ],
 

@@ -2,7 +2,7 @@ import env from 'dotenv-safe';
 
 import merge from 'deepmerge';
 
-import { config as baseConfig } from '../wdio.conf';
+import { config as baseConfig } from '../../wdio.conf';
 
 env.config();
 

@@ -13,8 +13,7 @@
   "parserOptions": { 
     "ecmaVersion": 2020, 
     "sourceType": "module", 
-    "project": "./tsconfig.json",
-    "tsconfigRootDir": "/Volumes/Work/RethinkMobileWDIO/UTAF"
+    "project": "./tsconfig.json"
   },
   "rules": {
     "@typescript-eslint/no-empty-interface": "off",
