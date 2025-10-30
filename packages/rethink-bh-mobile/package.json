@@ -7,7 +7,8 @@
     "clean": "npx shx rm -rf tmp node_modules",
     "del:reports": "npx shx rm -rf tmp",
     "hello": "echo Hey there! Im printing from $npm_package_name",
-    "test-mobile": "npm run del:reports && cross-env TEAM=rethink-bh-mobile npx wdio wdio.mobile-local.conf.ts"
+    "test-mobile": "npm run del:reports && cross-env TEAM=rethink-bh-mobile npx wdio wdio.mobile-local.conf.ts",
+    "test-browserstack": "npm run del:reports && cross-env TEAM=rethink-bh-mobile npx wdio wdio.mobile-browserstack.conf.ts"
   },
   "dependencies": {}
 }

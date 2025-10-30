@@ -14,7 +14,6 @@
     "prepare": "husky",
     "prettier": "cross-env npx prettier --config .prettierrc --write '**/*.ts'",
     "setup": "npm install --legacy-peer-deps --hoist",
-    "test-browserstack": "wdio ./globls/wdio.browserstack.conf.ts",
     "tsc": "npx cross-env npx tsc -p tsconfig.json",
     "upload:browserstack": "npm run upload:browserstack --workspace packages/test",
     "wdio": "npm exec wdio --workspace packages/test -- run packages/test/wdio.conf.ts"

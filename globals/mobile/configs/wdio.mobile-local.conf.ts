@@ -4,7 +4,6 @@ import { config as baseConfig } from '../../wdio.conf';
 export const config: WebdriverIO.Config = merge(baseConfig, {
   host: '0.0.0.0',
   port: 4723,
-  //path: '/wd/hub',
   // =====================
   // Services  Configuration
   // =====================
@@ -23,4 +22,5 @@ export const config: WebdriverIO.Config = merge(baseConfig, {
     ],
     ['shared-store'],
   ],
+  maxInstances: 5,
 });
