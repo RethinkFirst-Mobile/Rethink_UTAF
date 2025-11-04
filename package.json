@@ -46,6 +46,7 @@
     "allure-commandline": "^2.33.0",
     "app-root-path": "^3.1.0",
     "appium": "^3.1.0",
+    "appium-inspector-plugin": "^2025.8.2",
     "appium-uiautomator2-driver": "^4.0.0",
     "appium-xcuitest-driver": "^10.2.2",
     "axios": "^1.6.0",
@@ -97,7 +98,7 @@
   ],
   "workspaces": {
     "packages": [
-      "packages/retink-bh-mobile/*"
+      "packages/rethink-bh-mobile/*"
     ]
   },
   "volta": {

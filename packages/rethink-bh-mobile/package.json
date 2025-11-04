@@ -1,12 +1,13 @@
 {
   "name": "@rethink/rethink-bh-mobile",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "main": "index.js",
   "scripts": {
     "clean": "npx shx rm -rf tmp node_modules",
     "del:reports": "npx shx rm -rf tmp",
-    "hello": "echo Hey there! Im printing from $npm_package_name",
+    "hello": "echo Hey there! setup completed successfully. Im printing from @rethink/rethink-bh-mobile package.!",
+    "inspector": "appium --use-plugins=inspector --allow-cors",
     "test-browserstack": "npm run del:reports && cross-env TEAM=rethink-bh-mobile npx wdio wdio.mobile-browserstack.conf.ts",
     "test-mobile": "npm run del:reports && cross-env TEAM=rethink-bh-mobile npx wdio wdio.mobile-local.conf.ts"
   },
