@@ -1,7 +1,7 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable class-methods-use-this */
 import { format } from 'date-fns';
-import { Seconds } from '../enums/seconds.enum';
+import { MilliSeconds } from '../enums/milliseconds.enum';
 
 export class WebPage {
   async clearBrowserStorage(): Promise<void> {
@@ -10,7 +10,7 @@ export class WebPage {
     await browser.execute('window.localStorage.clear();');
   }
 
-  async click(element: WebdriverIO.Element, timeoutValue = Seconds.XXL): Promise<void> {
+  async click(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL): Promise<void> {
     await this.waitForPresence(element, timeoutValue);
     await this.waitForClickable(element, timeoutValue);
     await element.click();
@@ -20,19 +20,19 @@ export class WebPage {
     await element.clearValue();
   }
 
-  async clickElementUsingJS(element: WebdriverIO.Element, timeoutValue = Seconds.XXL): Promise<void> {
+  async clickElementUsingJS(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL): Promise<void> {
     await this.waitForPresence(element, timeoutValue);
     await this.waitForClickable(element, timeoutValue);
     await browser.execute('return arguments[0].click()', element);
   }
 
-  async getTextUsingJS(element: WebdriverIO.Element, timeoutValue = Seconds.XXL): Promise<string> {
+  async getTextUsingJS(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL): Promise<string> {
     await this.waitForPresence(element, timeoutValue);
     await this.waitForClickable(element, timeoutValue);
     return browser.execute('return arguments[0].value', element);
   }
 
-  async clearValueUsingJS(element: WebdriverIO.Element, timeoutValue = Seconds.XXL): Promise<void> {
+  async clearValueUsingJS(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL): Promise<void> {
     await this.waitForPresence(element, timeoutValue);
     await this.waitForClickable(element, timeoutValue);
     return browser.execute(`arguments[0].value =''`, element);
@@ -42,7 +42,7 @@ export class WebPage {
     await browser.deleteAllCookies();
   }
 
-  async getElementsCount(elements: WebdriverIO.ElementArray, timeoutValue = Seconds.XXL): Promise<number> {
+  async getElementsCount(elements: WebdriverIO.ElementArray, timeoutValue = MilliSeconds.XXL): Promise<number> {
     await this.waitForPresence(elements[0], timeoutValue);
     return elements.length;
   }
@@ -52,7 +52,7 @@ export class WebPage {
     return element.getAttribute(attributeName);
   }
 
-  async getCssValue(element: WebdriverIO.Element, cssValue: string, timeoutValue = Seconds.XXL) {
+  async getCssValue(element: WebdriverIO.Element, cssValue: string, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     return element.getCSSProperty(cssValue);
   }
@@ -65,29 +65,29 @@ export class WebPage {
     return browser.getWindowSize();
   }
 
-  async getText(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async getText(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     return element.getText();
   }
 
-  async getTexts(elements: WebdriverIO.ElementArray, timeoutValue = Seconds.XXL) {
+  async getTexts(elements: WebdriverIO.ElementArray, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(elements[0], timeoutValue);
     return elements.map(async (el) => el.getText());
   }
 
-  async getSelectedOption(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async getSelectedOption(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     const selectedOptionValue = await element.$('.//option[@selected="selected"]').getText();
     return selectedOptionValue;
   }
 
-  async getCheckBoxStatus(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async getCheckBoxStatus(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     const checkboxStatus = await element.isSelected();
     return checkboxStatus;
   }
 
-  async getSelectOptions(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async getSelectOptions(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     const ddOptions: string[] = [];
     await this.waitForPresence(element, timeoutValue);
     // return (await element.$$('option')).map(async (el) => el.getText());
@@ -98,7 +98,7 @@ export class WebPage {
     return ddOptions;
   }
 
-  async getValue(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async getValue(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     return element.getValue();
   }
@@ -115,7 +115,7 @@ export class WebPage {
     );
   }
 
-  async sleep(timeoutValue = Seconds.XXL) {
+  async sleep(timeoutValue = MilliSeconds.XXL) {
     await browser.pause(timeoutValue);
   }
 
@@ -138,17 +138,17 @@ export class WebPage {
     }
   }
 
-  async isSelected(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async isSelected(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     return element.isSelected();
   }
 
-  async isEnabled(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async isEnabled(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     return element.isEnabled();
   }
 
-  async isClickable(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async isClickable(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     return element.isClickable();
   }
@@ -165,7 +165,7 @@ export class WebPage {
     await browser.maximizeWindow();
   }
 
-  async mouseHoverOver(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async mouseHoverOver(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     await element.moveTo();
   }
@@ -190,17 +190,17 @@ export class WebPage {
     await browser.refresh();
   }
 
-  async scrollToElement(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async scrollToElement(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await element.scrollIntoView({ block: 'center' });
     await this.waitForPresence(element, timeoutValue);
   }
 
-  async selectByVisibleText(element: WebdriverIO.Element, value: string, timeoutValue = Seconds.XXL) {
+  async selectByVisibleText(element: WebdriverIO.Element, value: string, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     await element.selectByVisibleText(value);
   }
 
-  async selectByIndex(element: WebdriverIO.Element, index: number, timeoutValue = Seconds.XXL) {
+  async selectByIndex(element: WebdriverIO.Element, index: number, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     await element.selectByIndex(index);
   }
@@ -209,7 +209,7 @@ export class WebPage {
     element: WebdriverIO.Element,
     attribute: string,
     attributeValue: string,
-    timeoutValue = Seconds.XXL,
+    timeoutValue = MilliSeconds.XXL,
   ) {
     await this.waitForPresence(element, timeoutValue);
     await element.selectByAttribute(attribute, attributeValue);
@@ -221,7 +221,7 @@ export class WebPage {
     intermediateDelay = 500,
     maxNoCharactersInChunk = 3,
     clear = true,
-    timeoutValue = Seconds.XXL,
+    timeoutValue = MilliSeconds.XXL,
   ) {
     const textChuncks = text.match(new RegExp(`(.{1,${maxNoCharactersInChunk}})`, 'g'));
     await this.waitForPresence(element, timeoutValue);
@@ -260,7 +260,7 @@ export class WebPage {
         return false;
       },
       {
-        timeout: Seconds.XXL,
+        timeout: MilliSeconds.XXL,
         timeoutMsg: 'Exception : switchToLastBrowserTab - Unable to switch to last browser tab',
       },
     );
@@ -277,7 +277,7 @@ export class WebPage {
         return false;
       },
       {
-        timeout: Seconds.XXL,
+        timeout: MilliSeconds.XXL,
         timeoutMsg: 'Exception : switchToFirstBrowserTab - Unable to switch to first browser tab',
       },
     );
@@ -296,22 +296,22 @@ export class WebPage {
     await browser.saveScreenshot(path);
   }
 
-  async type(element: WebdriverIO.Element, sendKeys: string | number, timeoutValue = Seconds.XXL) {
+  async type(element: WebdriverIO.Element, sendKeys: string | number, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     await element.setValue(sendKeys);
   }
 
-  async waitForBrowserUrlContains(url: string, timeoutValue = Seconds.XXL) {
+  async waitForBrowserUrlContains(url: string, timeoutValue = MilliSeconds.XXL) {
     await browser.waitUntil(async () => (await browser.getUrl()).includes(url), {
       timeout: timeoutValue,
-      timeoutMsg: `Exception : waitForBrowserUrlContains - url did not contain (${url}) even after timeout of ${timeoutValue} Seconds`,
+      timeoutMsg: `Exception : waitForBrowserUrlContains - url did not contain (${url}) even after timeout of ${timeoutValue} MilliSeconds`,
     });
   }
 
-  async waitForElementToHaveText(element: WebdriverIO.Element, expectedText: string, timeoutValue = Seconds.XXL) {
+  async waitForElementToHaveText(element: WebdriverIO.Element, expectedText: string, timeoutValue = MilliSeconds.XXL) {
     await browser.waitUntil(async () => (await element.getText()).includes(expectedText), {
       timeout: timeoutValue,
-      timeoutMsg: `Exception : waitForElementToHaveText - text (${expectedText}) did not appear on element (${element.selector}) even after timeout of ${timeoutValue} Seconds`,
+      timeoutMsg: `Exception : waitForElementToHaveText - text (${expectedText}) did not appear on element (${element.selector}) even after timeout of ${timeoutValue} MilliSeconds`,
     });
   }
 
@@ -319,63 +319,67 @@ export class WebPage {
     element: WebdriverIO.Element,
     attributeName: string,
     expectedValue: string,
-    timeoutValue = Seconds.XXL,
+    timeoutValue = MilliSeconds.XXL,
   ) {
     await browser.waitUntil(async () => (await element.getAttribute(attributeName)).includes(expectedValue), {
       timeout: timeoutValue,
-      timeoutMsg: `Exception : waitForAttributeToHaveValue - value (${expectedValue}) did not appear on element (${element.selector}) even after timeout of ${timeoutValue} Seconds`,
+      timeoutMsg: `Exception : waitForAttributeToHaveValue - value (${expectedValue}) did not appear on element (${element.selector}) even after timeout of ${timeoutValue} MilliSeconds`,
     });
   }
 
-  async waitForElementToHaveValue(element: WebdriverIO.Element, expectedValue: string, timeoutValue = Seconds.XXL) {
+  async waitForElementToHaveValue(
+    element: WebdriverIO.Element,
+    expectedValue: string,
+    timeoutValue = MilliSeconds.XXL,
+  ) {
     await browser.waitUntil(async () => (await element.getValue()).includes(expectedValue), {
       timeout: timeoutValue,
-      timeoutMsg: `Exception : waitForElementToHaveValue - value (${expectedValue}) did not appear on element (${element.selector}) even after timeout of ${timeoutValue} Seconds`,
+      timeoutMsg: `Exception : waitForElementToHaveValue - value (${expectedValue}) did not appear on element (${element.selector}) even after timeout of ${timeoutValue} MilliSeconds`,
     });
   }
 
-  async waitForAlert(timeoutValue = Seconds.XXL) {
+  async waitForAlert(timeoutValue = MilliSeconds.XXL) {
     await browser.waitUntil(() => browser.isAlertOpen(), {
       timeout: timeoutValue,
-      timeoutMsg: `Exception : waitForAlert - Alert did not appear even after timeout of ${timeoutValue} Seconds`,
+      timeoutMsg: `Exception : waitForAlert - Alert did not appear even after timeout of ${timeoutValue} MilliSeconds`,
     });
   }
 
-  async waitForEnable(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async waitForEnable(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await element.waitForEnabled({
       timeout: timeoutValue,
-      timeoutMsg: `Exception : waitForEnable - element (${element.selector}) is not enabled even after timeout of ${timeoutValue} seconds.`,
+      timeoutMsg: `Exception : waitForEnable - element (${element.selector}) is not enabled even after timeout of ${timeoutValue} MilliSeconds.`,
     });
   }
 
-  async waitForDisable(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async waitForDisable(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await element.waitForEnabled({
       timeout: timeoutValue,
       reverse: true,
-      timeoutMsg: `Exception : waitForDisable - element (${element.selector}) is not disabled even after timeout of ${timeoutValue} seconds.`,
+      timeoutMsg: `Exception : waitForDisable - element (${element.selector}) is not disabled even after timeout of ${timeoutValue} MilliSeconds.`,
     });
   }
 
-  async waitForPresence(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async waitForPresence(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await element.isExisting();
     await element.waitForDisplayed({
       timeout: timeoutValue,
-      timeoutMsg: `Exception : waitForPresence - element (${element.selector}) did not appear even after timeout of ${timeoutValue} Seconds`,
+      timeoutMsg: `Exception : waitForPresence - element (${element.selector}) did not appear even after timeout of ${timeoutValue} MilliSeconds`,
     });
   }
 
-  async waitForAbsence(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async waitForAbsence(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await element.waitForDisplayed({
       timeout: timeoutValue,
       reverse: true,
-      timeoutMsg: `Exception : waitForAbsence - element (${element.selector}) didnot disappear even after timeout of ${timeoutValue} Seconds`,
+      timeoutMsg: `Exception : waitForAbsence - element (${element.selector}) didnot disappear even after timeout of ${timeoutValue} MilliSeconds`,
     });
   }
 
-  async waitForClickable(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async waitForClickable(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await element.waitForClickable({
       timeout: timeoutValue,
-      timeoutMsg: `Exception : waitForClickable - Element (${element.selector}) not clickable even after timeout of ${timeoutValue} Seconds.`,
+      timeoutMsg: `Exception : waitForClickable - Element (${element.selector}) not clickable even after timeout of ${timeoutValue} MilliSeconds.`,
     });
   }
 
@@ -403,13 +407,13 @@ export class WebPage {
     await optionElement.click();
   }
 
-  async doubleClick(element: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async doubleClick(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     await this.waitForClickable(element, timeoutValue);
     await element.doubleClick();
   }
 
-  async dragAndDrop(element: WebdriverIO.Element, target: WebdriverIO.Element, timeoutValue = Seconds.XXL) {
+  async dragAndDrop(element: WebdriverIO.Element, target: WebdriverIO.Element, timeoutValue = MilliSeconds.XXL) {
     await this.waitForPresence(element, timeoutValue);
     await element.dragAndDrop(target);
   }

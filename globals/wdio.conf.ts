@@ -1,6 +1,6 @@
 import root from 'app-root-path';
 
-import { Seconds } from './enums/seconds.enum';
+import { MilliSeconds } from './enums/milliseconds.enum';
 
 export const config: WebdriverIO.Config = {
   // WebDriver Configs
@@ -13,8 +13,8 @@ export const config: WebdriverIO.Config = {
   // WebDriverIO Configs
   automationProtocol: 'webdriver',
   baseUrl: undefined,
-  waitforTimeout: Seconds.XXL,
-  waitforInterval: Seconds.XXS,
+  waitforTimeout: MilliSeconds.XXL,
+  waitforInterval: MilliSeconds.XXS,
 
   // TestRunner Configs
   // TODO:target for specific spec file
@@ -46,7 +46,7 @@ export const config: WebdriverIO.Config = {
     retry: 0,
     retryTagFilter: '',
     tagExpression: '',
-    timeout: (process.env.DEBUG_TIME_OUT as unknown as number) || 5 * Seconds.XXL,
+    timeout: (process.env.DEBUG_TIME_OUT as unknown as number) || 5 * MilliSeconds.XXL,
     scenarioLevelReporter: false,
     order: 'defined',
   },

@@ -1,4 +1,4 @@
-class ActionHelper {
+export class MobileBasePage {
   async clickElement(element: WebdriverIO.Element) {
     await element.waitForDisplayed({ timeout: 20000 });
     await element.click();
@@ -15,5 +15,3 @@ class ActionHelper {
     return element.getText();
   }
 }
-
-export default new ActionHelper();

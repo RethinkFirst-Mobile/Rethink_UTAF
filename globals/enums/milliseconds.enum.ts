@@ -1,4 +1,4 @@
-export const enum Seconds {
+export const enum MilliSeconds {
   XXXS = 2000,
   XXS = 5000,
   XS = 10000,
