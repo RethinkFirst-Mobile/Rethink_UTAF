@@ -1,0 +1,42 @@
+// ESLint configuration file
+
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-typescript/base",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint", "json-format", "prettier", "import"],
+  "parserOptions": { 
+    "ecmaVersion": 2020, 
+    "sourceType": "module", 
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/no-throw-literal": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/await-thenable": "off",
+    "@typescript-eslint/no-base-to-string": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "no-console": 1,
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
+    "prettier/prettier": 2,
+    "no-await-in-loop": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
+    "json/sort-package-json": "pro",
+    "json/json-with-comments-files": [] // "**/tsconfig.json", ".vscode/**"
+  }
+}

@@ -1,0 +1,15 @@
+node_modules/
+reports/
+.idea/
+.vscode/
+coverage/
+*.min.js
+!.*.json
+/**/node_modules/*
+node_modules
+package-lock.json
+commitlint.config.js
+**/allure-report
+dist/
+build/
+out/

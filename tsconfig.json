@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "module": "CommonJs",
+    "outDir": "./.build/",
+    "removeComments": true,
+    "strict": true,
+    "baseUrl": ".",
+    "allowJs": true,
+    "types": [
+      "node",
+      "@wdio/globals/types",
+      "@wdio/mocha-framework",
+      "@wdio/cucumber-framework",
+      "@wdio/shared-store-service",
+      "@wdio/appium-service",
+      "webdriverio",
+      "expect-webdriverio",
+      "@cucumber/cucumber",
+      "appium",
+      "appium-uiautomator2-driver",
+      "appium-xcuitest-driver"
+    ],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
