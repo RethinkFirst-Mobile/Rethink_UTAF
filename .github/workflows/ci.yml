@@ -1,4 +1,4 @@
-name: Static code analysis - Lint Check
+name: "Static code analysis - Lint Check"
 
 on:
   push:
@@ -12,8 +12,8 @@ jobs:
     steps:
       - run: echo "Starting Lint Check"
       - name: Use Node.js
-      - uses: actions/setup-node@v4
-      - with:
+        uses: actions/setup-node@v4
+        with:
           node-version: '22.x'
       - uses: actions/checkout@v5
       - name: Install dependencies
