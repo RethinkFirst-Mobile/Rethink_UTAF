@@ -7,9 +7,21 @@
     "clean": "npx shx rm -rf tmp node_modules",
     "del:reports": "npx shx rm -rf tmp",
     "hello": "echo Hey there! setup completed successfully. Im printing from @rethink/rethink-bh-mobile package.!",
-    "inspector": "appium --use-plugins=inspector --allow-cors",
-    "test-browserstack": "npm run del:reports && cross-env TEAM=rethink-bh-mobile npx wdio wdio.mobile-browserstack.conf.ts",
-    "test-mobile": "npm run del:reports && cross-env TEAM=rethink-bh-mobile npx wdio wdio.mobile-local.conf.ts"
+    "launch-inspector": "appium --use-plugins=inspector --allow-cors",
+    "mob:app:bs:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=android AUTOMATION_NAME=UiAutomator2 npx wdio wdio.mobile-browserstack.conf.ts",
+    "mob:app:bs:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=ios AUTOMATION_NAME=XCUITest npx wdio wdio.mobile-browserstack.conf.ts",
+    "mob:app:local:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=android AUTOMATION_NAME=UiAutomator2 npx wdio wdio.mobile-local.conf.ts",
+    "mob:app:local:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=ios AUTOMATION_NAME=XCUITest npx wdio wdio.mobile-local.conf.ts",
+    "mob:web:bs:chrome:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=android AUTOMATION_NAME=UiAutomator2 BROWSER=chrome npx wdio wdio.mobile-browserstack.conf.ts",
+    "mob:web:bs:chrome:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=ios AUTOMATION_NAME=XCUITest BROWSER=chrome npx wdio wdio.mobile-browserstack.conf.ts",
+    "mob:web:bs:edge:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=android AUTOMATION_NAME=UiAutomator2 BROWSER=MicrosoftEdge npx wdio wdio.mobile-browserstack.conf.ts",
+    "mob:web:bs:firefox:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=android AUTOMATION_NAME=UiAutomator2 BROWSER=firefox npx wdio wdio.mobile-browserstack.conf.ts",
+    "mob:web:bs:safari:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=ios AUTOMATION_NAME=XCUITest BROWSER=safari npx wdio wdio.mobile-browserstack.conf.ts",
+    "mob:web:local:chrome:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=android AUTOMATION_NAME=UiAutomator2 BROWSER=chrome npx wdio wdio.mobile-local.conf.ts",
+    "mob:web:local:chrome:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=ios AUTOMATION_NAME=XCUITest BROWSER=chrome npx wdio wdio.mobile-local.conf.ts",
+    "mob:web:local:edge:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=android AUTOMATION_NAME=UiAutomator2 BROWSER=MicrosoftEdge npx wdio wdio.mobile-local.conf.ts",
+    "mob:web:local:firefox:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=android AUTOMATION_NAME=UiAutomator2 BROWSER=firefox npx wdio wdio.mobile-local.conf.ts",
+    "mob:web:local:safari:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=ios AUTOMATION_NAME=XCUITest BROWSER=safari npx wdio wdio.mobile-local.conf.ts"
   },
   "dependencies": {}
 }
