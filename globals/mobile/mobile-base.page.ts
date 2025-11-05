@@ -1,17 +1,13 @@
-export class MobileBasePage {
-  async clickElement(element: WebdriverIO.Element) {
-    await element.waitForDisplayed({ timeout: 20000 });
-    await element.click();
-  }
+import { MilliSeconds } from '../../globals/enums/milliseconds.enum';
 
-  async typeText(element: WebdriverIO.Element, text: string) {
-    await element.waitForDisplayed({ timeout: 20000 });
-    await element.click();
+export class MobileBasePage {
+  async typeText(element: WebdriverIO.Element, text: string, timeoutValue = MilliSeconds.XL) {
+    await this.waitForPresence(element, timeoutValue);
     await element.setValue(text);
   }
 
-  async getText(element: WebdriverIO.Element): Promise<string> {
-    await element.waitForDisplayed({ timeout: 20000 });
+  async getText(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XL) {
+    await this.waitForPresence(element, timeoutValue);
     return element.getText();
   }
 
@@ -20,11 +16,10 @@ export class MobileBasePage {
    * @param element The WebdriverIO element object.
    * @param timeout The maximum time to wait (default 10000ms).
    */
-  static async waitForDisplayed(element: WebdriverIO.Element, timeout = 10000): Promise<void> {
-    // We use the element object directly, no need for the $() command inside the wrapper.
+  async waitForPresence(element: WebdriverIO.Element, timeoutValue = MilliSeconds.XL) {
     await element.waitForDisplayed({
-      timeout: timeout,
-      timeoutMsg: `Element was not displayed within ${timeout}ms.`,
+      timeout: timeoutValue,
+      timeoutMsg: `Exception : waitForPresence - element (${element.selector}) did not appear even after timeout of ${timeoutValue} MilliSeconds`,
     });
   }
 
@@ -32,8 +27,8 @@ export class MobileBasePage {
    * Clicks on an element after waiting for it to be displayed and clickable.
    * @param element The WebdriverIO element object.
    */
-  static async click(element: WebdriverIO.Element): Promise<void> {
-    await this.waitForDisplayed(element);
+  async click(element: WebdriverIO.Element) {
+    await this.waitForPresence(element);
     await element.waitForClickable({ timeout: 5000, timeoutMsg: 'Element was not clickable.' });
     await element.click();
   }
@@ -43,21 +38,10 @@ export class MobileBasePage {
    * @param element The WebdriverIO element object.
    * @param value The text to enter.
    */
-  static async setValue(element: WebdriverIO.Element, value: string): Promise<void> {
-    await this.waitForDisplayed(element);
+  async setValue(element: WebdriverIO.Element, value: string): Promise<void> {
+    await this.waitForPresence(element);
     await element.clearValue();
     await element.setValue(value);
-  }
-
-  /**
-   * Gets the text from an element.
-   * @param element The WebdriverIO element object.
-   * @returns The element's text as a string.
-   */
-  static async getText(element: WebdriverIO.Element): Promise<string> {
-    await this.waitForDisplayed(element);
-    const text = await element.getText();
-    return text;
   }
 
   /**

@@ -16,8 +16,9 @@ export const config: WebdriverIO.Config = merge(baseConfig, {
         args: {
           // For arguments see
           // https://github.com/webdriverio/webdriverio/tree/master/packages/wdio-appium-service
+          relaxedSecurity: true,
         },
-        command: 'appium --allow-insecure chromedriver_autodownload',
+        command: 'appium',
       },
     ],
     ['shared-store'],
