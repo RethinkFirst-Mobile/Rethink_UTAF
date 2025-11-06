@@ -11,11 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Starting Lint Check"
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22.x'
-      - uses: actions/checkout@v5
+      - name: checkout code
+        uses: actions/checkout@v5
       - name: Install dependencies
         run: npm run setup
       - name: Run linter

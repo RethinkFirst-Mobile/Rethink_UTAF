@@ -22,7 +22,7 @@ export const config: WebdriverIO.Config = merge(baseConfig, {
           app: process.env.APP_PATH,
           bundleId: process.env.APP_BUNDLEID,
         }),
-        ...(process.env.PLATFORM_NAME === 'android' && {
+        ...(process.env.PLATFORM_NAME === 'Android' && {
           app: process.env.APP_PATH,
           appPackage: process.env.APP_PACAKGE,
           appActivity: process.env.APP_ACTIVITY,
