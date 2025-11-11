@@ -1,5 +1,5 @@
 {
-  "name": "@rethink/rethink-bh-mobile",
+  "name": "@rethink_utaf/rethink-bh-mobile",
   "version": "1.0.0",
   "private": false,
   "main": "index.js",
@@ -8,6 +8,7 @@
     "del:reports": "npx shx rm -rf tmp",
     "hello": "echo Hey there! setup completed successfully. Im printing from @rethink/rethink-bh-mobile package.!",
     "launch-inspector": "appium --use-plugins=inspector --allow-cors",
+    "upload:browserstack": "npm run upload:browserstack --workspace packages/test",
     "mob:app:bs:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=Android AUTOMATION_NAME=UiAutomator2 npx wdio wdio.mobile-browserstack.conf.ts",
     "mob:app:bs:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=iOS AUTOMATION_NAME=XCUITest npx wdio wdio.mobile-browserstack.conf.ts",
     "mob:app:local:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=Android AUTOMATION_NAME=UiAutomator2 npx wdio wdio.mobile-local.conf.ts",

@@ -1,22 +1,18 @@
 {
-  "name": "@rethink/rethink",
+  "name": "@rethink_utaf/rethink_utaf",
   "version": "1.0.0",
   "description": "E2E Test Automation Framework setup for Cross Platforms, Web, Mobile and API. Current specific to Mobile, can be expanded to web later when/if needed",
   "private": true,
   "scripts": {
-    "allure-report": "node_modules/.bin/allure generate --clean packages/rethink-bh-mobile/tmp/allure-reports && allure open -p 5050",
     "allure:history": "mkdir -p allure-report/history packages/rethink-bh-mobile/tmp/allure-reports && cp -a allure-report/history packages/rethink-bh-mobile/tmp/allure-reports/",
     "clean": "npx lerna run clean --parallel && npx shx rm -rf node_modules",
     "commit": "npx commit",
     "hello": "npx lerna run hello --parallel",
     "postinstall": "husky install",
     "lint": "npm run tsc && npx cross-env npx eslint . --ext .json,.eslintrc,.eslintignore,.js,.ts --fix && npx cross-env npx gherkin-lint -c .lint.feature -i **/node_modules/**/*.feature && npm run prettier",
-    "prepare": "husky",
     "prettier": "cross-env npx prettier --config .prettierrc --write '**/*.ts'",
     "setup": "npm install --legacy-peer-deps --hoist",
-    "tsc": "npx cross-env npx tsc -p tsconfig.json",
-    "upload:browserstack": "npm run upload:browserstack --workspace packages/test",
-    "wdio": "npm exec wdio --workspace packages/test -- run packages/test/wdio.conf.ts"
+    "tsc": "npx cross-env npx tsc -p tsconfig.json"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
@@ -43,7 +39,7 @@
     "@wdio/mocha-framework": "^9.20.0",
     "@wdio/shared-store-service": "^9.20.0",
     "@wdio/spec-reporter": "^9.20.0",
-    "allure-commandline": "^2.33.0",
+    "allure-commandline": "^2.34.1",
     "app-root-path": "^3.1.0",
     "appium": "^3.1.0",
     "appium-inspector-plugin": "^2025.8.2",
