@@ -316,7 +316,7 @@ Follow the below practices when contributing:
 
 ## Contact
 
-If you want to learn more or questions ? send a note to <nikil.gunda@rethinkfirst.com>
+If you want to learn more or questions ? send a note to <nikil.gunda@rethinkfirst.com> 
 
 ## License
 
