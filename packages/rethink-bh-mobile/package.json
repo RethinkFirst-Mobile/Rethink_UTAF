@@ -1,5 +1,5 @@
 {
-  "name": "@rethink/rethink-bh-mobile",
+  "name": "@rethink_utaf/rethink-bh-mobile",
   "version": "1.0.0",
   "private": false,
   "main": "index.js",
@@ -21,7 +21,8 @@
     "mob:web:local:chrome:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=iOS AUTOMATION_NAME=XCUITest BROWSER=chrome npx wdio wdio.mobile-local.conf.ts",
     "mob:web:local:edge:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=Android AUTOMATION_NAME=UiAutomator2 BROWSER=MicrosoftEdge npx wdio wdio.mobile-local.conf.ts",
     "mob:web:local:firefox:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=Android AUTOMATION_NAME=UiAutomator2 BROWSER=firefox npx wdio wdio.mobile-local.conf.ts",
-    "mob:web:local:safari:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=iOS AUTOMATION_NAME=XCUITest BROWSER=safari npx wdio wdio.mobile-local.conf.ts"
+    "mob:web:local:safari:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=iOS AUTOMATION_NAME=XCUITest BROWSER=safari npx wdio wdio.mobile-local.conf.ts",
+    "upload:browserstack": "npm run upload:browserstack --workspace packages/test"
   },
   "dependencies": {}
 }

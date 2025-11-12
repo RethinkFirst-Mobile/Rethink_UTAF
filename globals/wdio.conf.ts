@@ -3,7 +3,6 @@ import root from 'app-root-path';
 import { MilliSeconds } from './enums/milliseconds.enum';
 import allureReporter from '@wdio/allure-reporter';
 
-const mergeResults = require('wdio-json-reporter/mergeResults');
 const allure = require('allure-commandline');
 
 export const config: WebdriverIO.Config = {
@@ -66,7 +65,7 @@ export const config: WebdriverIO.Config = {
     [
       'allure',
       {
-        outputDir: `${root}/packages/${process.env.TEAM}/tmp/allure-reports`,
+        outputDir: `${root}/packages/${process.env.TEAM}/allure-reports`,
         disableWebdriverStepsReporting: true,
         useCucumberStepReporter: false,
         addConsoleLogs: true, // Attach console logs to reports
@@ -85,11 +84,11 @@ export const config: WebdriverIO.Config = {
    * Hook that gets executed before the suite starts
    * @param {Object} suite suite details
    */
-  beforeSuite: function (suite) {
+  beforeSuite: async function (suite) {
     allureReporter.addFeature(suite.title);
   },
 
-  beforeTest: function (test) {
+  beforeTest: async function (test) {
     // Add dynamic metadata based on test context if needed
     allureReporter.addArgument('Test ID', test.parent + '::' + test.title);
   },
@@ -103,13 +102,13 @@ export const config: WebdriverIO.Config = {
     allureReporter.addAttachment('afterTest_' + test.fullName, Buffer.from(screenshot, 'base64'), 'image/png');
   },
 
-  afterStep: async function () {
+  afterStep: async function (steps) {
     // Take a screenshot
     const screenshot = await browser.takeScreenshot();
     // Add the screenshot as an attachment to the Allure report
     // 'Failure Screenshot' is the attachment name in the report
     // 'image/png' is the MIME type
-    allureReporter.addAttachment('afterStep_' + test.name, Buffer.from(screenshot, 'base64'), 'image/png');
+    allureReporter.addAttachment('afterStep_' + steps.text, Buffer.from(screenshot, 'base64'), 'image/png');
   },
 
   /**
@@ -120,19 +119,33 @@ export const config: WebdriverIO.Config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  onComplete: function () {
-    mergeResults(`${root}/packages/${process.env.TEAM}/tmp`, 'wdio-*', 'testResults.json');
-    const generation = allure(['generate', 'allure-results', '--clean', '-o', 'allure-report']);
+  onComplete: async function () {
+    const reportError = new Error('Could not generate Allure report');
+    const openError = new Error('Could not open Allure report');
+    const allureResultsDir = `${root}/packages/${process.env.TEAM}/allure-reports`;
+    const allureReportDir = `${root}/packages/${process.env.TEAM}/allure-reports/report`;
 
+    const generation = allure(['generate', '--single-file', allureResultsDir, '--clean', '-o', allureReportDir]);
+    const openReport = allure(['open', allureReportDir]);
     return new Promise<void>((resolve, reject) => {
-      generation.on('close', function (code: number) {
-        if (code === 0) {
-          console.log('Allure report generated successfully');
-          resolve();
-        } else {
-          console.log('Allure report generation failed with code:', code);
-          reject(new Error('Allure report generation failed'));
+      const generationTimeout = setTimeout(() => reject(reportError), MilliSeconds.XXL);
+      const openTimeout = setTimeout(() => reject(openError), MilliSeconds.XS);
+
+      generation.on('exit', function (exitCode: number) {
+        clearTimeout(generationTimeout);
+        if (exitCode !== 0) {
+          return reject(reportError);
         }
+        console.log('Allure report successfully generated');
+      });
+
+      openReport.on('exit', function (exitCode: number) {
+        clearTimeout(openTimeout);
+        if (exitCode !== 0) {
+          return reject(new Error('Could not open Allure report'));
+        }
+        console.log('Allure report successfully opened');
+        resolve();
       });
     });
   },
