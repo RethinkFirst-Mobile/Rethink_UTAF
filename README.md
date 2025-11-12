@@ -104,6 +104,10 @@ $ git checkout -b <local_branch_name> 👈🏽
 $ npm run setup 👈🏽
 ```
 
+- Run Below command only for iOS Setup in MAC
+```
+$ npm run setup:appiumiOS
+```
 - run the lint check
 
 ```

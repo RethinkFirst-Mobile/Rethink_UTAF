@@ -12,6 +12,7 @@
     "lint": "npm run tsc && npx cross-env npx eslint . --ext .json,.eslintrc,.eslintignore,.js,.ts --fix && npx cross-env npx gherkin-lint -c .lint.feature -i **/node_modules/**/*.feature && npm run prettier",
     "prettier": "cross-env npx prettier --config .prettierrc --write '**/*.ts'",
     "setup": "npm install --legacy-peer-deps --hoist",
+    "setup:appiumiOS": "globals/mobile/setup-appium-mac.sh",
     "tsc": "npx cross-env npx tsc -p tsconfig.json"
   },
   "devDependencies": {
@@ -53,7 +54,7 @@
     "deepmerge": "^4.3.1",
     "dotenv-safe": "^9.1.0",
     "eslint": "^8.57.1",
-    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
