@@ -77,7 +77,7 @@ $ git clone --no-checkout git@github.com:RethinkFirst-Mobile/Rethink_UTAF.git �
 - initialize the sparse checkout
 
 ```
-$ git sparse-checkout init --cone 👈🏽
+$ cd Rethink_UTAF && git sparse-checkout init --cone 👈🏽
 ```
 
 - downloads the root files
@@ -107,6 +107,10 @@ $ npm run setup 👈🏽
 - Run Below command only for iOS Setup in MAC
 ```
 $ npm run setup:appiumiOS
+
+Note: If you see privileges error, please run below command and re-run the above command.
+
+$ chmod +x globals/mobile/setup-appium-mac.sh
 ```
 - run the lint check
 
@@ -150,6 +154,12 @@ $ npx lerna run launch-inspector
 
 ```
 $ npm run clean 👈🏽
+```
+
+- to download dependencies again after cleanup [OPTIONAL]
+
+```
+$ npm run setup 👈🏽
 ```
 
 - to commit your work or changes
