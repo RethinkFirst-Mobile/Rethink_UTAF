@@ -182,7 +182,7 @@ $ git push -u origin <remote_branch_name> 👈🏽
 
 ## Setup Mobile Capabilities
 
-- create a .env file with the below content into the UTAF folder. Modify the capability values as per the need.
+- create a .env file with the below content(**same is part of .env.example file**) into the UTAF folder. Modify the capability values as per the need.
 
 ```
 # Environment variables for the project
