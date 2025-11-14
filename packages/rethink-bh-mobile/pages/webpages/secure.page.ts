@@ -1,9 +1,9 @@
-import Page from './page';
+import { WebPage } from './../../../../globals/web/web.page';
 
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class SecurePage extends Page {
+class SecurePage extends WebPage {
   /**
    * define selectors using getter methods
    */
