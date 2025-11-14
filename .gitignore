@@ -21,6 +21,7 @@ packages/**/allure-results
 play.ts
 package-lock.json
 packages/**/Screenshots
+packages/**/allure/
 
 # dotenv environment variables file
 .env

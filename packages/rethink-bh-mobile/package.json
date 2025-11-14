@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "npx shx rm -rf tmp node_modules",
     "del:reports": "npx shx rm -rf tmp",
-    "hello": "echo Hey there! setup completed successfully. Im printing from @rethink/rethink-bh-mobile package.!",
+    "hello": "echo Hey there! setup completed successfully. Im printing from @rethink_utaf/rethink-bh-mobile package.!",
     "launch-inspector": "appium --use-plugins=inspector --allow-cors",
     "mob:app:bs:android": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=Android AUTOMATION_NAME=UiAutomator2 npx wdio wdio.mobile-browserstack.conf.ts",
     "mob:app:bs:ios": "npm run del:reports && cross-env TEAM=rethink-bh-mobile PLATFORM_NAME=iOS AUTOMATION_NAME=XCUITest npx wdio wdio.mobile-browserstack.conf.ts",

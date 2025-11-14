@@ -65,7 +65,7 @@ export const config: WebdriverIO.Config = {
     [
       'allure',
       {
-        outputDir: `${root}/packages/${process.env.TEAM}/allure-reports`,
+        outputDir: `${root}/packages/${process.env.TEAM}/tmp/reports/allure`,
         disableWebdriverStepsReporting: true,
         useCucumberStepReporter: false,
         addConsoleLogs: true, // Attach console logs to reports
@@ -120,33 +120,47 @@ export const config: WebdriverIO.Config = {
    * @param {<Object>} results object containing test results
    */
   onComplete: async function () {
-    const reportError = new Error('Could not generate Allure report');
-    const openError = new Error('Could not open Allure report');
-    const allureResultsDir = `${root}/packages/${process.env.TEAM}/allure-reports`;
-    const allureReportDir = `${root}/packages/${process.env.TEAM}/allure-reports/report`;
+    const allureResultsDir = `${root}/packages/${process.env.TEAM}/tmp/reports/allure`;
+    const allureReportDir = `${root}/packages/${process.env.TEAM}/tmp/reports/allure/report`;
 
-    const generation = allure(['generate', '--single-file', allureResultsDir, '--clean', '-o', allureReportDir]);
-    const openReport = allure(['open', allureReportDir]);
-    return new Promise<void>((resolve, reject) => {
-      const generationTimeout = setTimeout(() => reject(reportError), MilliSeconds.XXL);
-      const openTimeout = setTimeout(() => reject(openError), MilliSeconds.XS);
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    await generateReport(allureResultsDir, allureReportDir);
 
-      generation.on('exit', function (exitCode: number) {
-        clearTimeout(generationTimeout);
-        if (exitCode !== 0) {
-          return reject(reportError);
-        }
-        console.log('Allure report successfully generated');
-      });
-
-      openReport.on('exit', function (exitCode: number) {
-        clearTimeout(openTimeout);
-        if (exitCode !== 0) {
-          return reject(new Error('Could not open Allure report'));
-        }
-        console.log('Allure report successfully opened');
-        resolve();
-      });
-    });
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    // await openReport(allureReportDir);
   },
 };
+
+async function generateReport(resultsDirectory: string, reportDirectory: string) {
+  const reportError = new Error('Could not generate Allure report');
+  const generation = allure(['generate', '--single-file', resultsDirectory, '--clean', '-o', reportDirectory]);
+  return new Promise<void>((resolve, reject) => {
+    const generationTimeout = setTimeout(() => reject(reportError), MilliSeconds.XXL);
+
+    generation.on('exit', function (exitCode: number) {
+      clearTimeout(generationTimeout);
+      if (exitCode !== 0) {
+        return reject(reportError);
+      }
+      console.log('Allure report successfully generated');
+      resolve();
+    });
+  });
+}
+
+// async function openReport(reportDirectory: string) {
+//   const openError = new Error('Could not open Allure report');
+//   const opening = allure(['open', reportDirectory]);
+//   return new Promise<void>((resolve, reject) => {
+//     const openTimeout = setTimeout(() => reject(openError), MilliSeconds.XS);
+
+//     opening.on('exit', function (exitCode: number) {
+//       clearTimeout(openTimeout);
+//       if (exitCode !== 0) {
+//         return reject(openError);
+//       }
+//       console.log('Allure report successfully opened');
+//       resolve();
+//     });
+//   });
+// }

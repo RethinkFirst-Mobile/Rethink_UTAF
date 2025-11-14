@@ -3,5 +3,10 @@
     "./packages/*/e2e/**/*.steps.ts",
   ],
   "cucumberautocomplete.strictGherkinCompletion": true,
-  "editor.bracketPairColorization.enabled": true
+  "editor.bracketPairColorization.enabled": true,
+  "cSpell.words": [
+    "cucumberjs",
+    "wdio",
+    "wdlogs"
+  ]
 }
