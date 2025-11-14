@@ -418,7 +418,11 @@ export class WebPage {
     await element.doubleClick();
   }
 
-  async dragAndDrop(element: ChainablePromiseElement, target: ChainablePromiseElement, timeoutValue = MilliSeconds.XXL) {
+  async dragAndDrop(
+    element: ChainablePromiseElement,
+    target: ChainablePromiseElement,
+    timeoutValue = MilliSeconds.XXL,
+  ) {
     await this.waitForPresence(element, timeoutValue);
     await element.dragAndDrop(target);
   }

@@ -4,8 +4,8 @@
   "description": "E2E Test Automation Framework setup for Cross Platforms, Web, Mobile and API. Current specific to Mobile, can be expanded to web when/if needed",
   "private": true,
   "scripts": {
-    "allure:open": "allure open packages/**/allure/report",
     "allure:history": "mkdir -p packages/**/allure/report && cp -a packages/**/tmp/reports/allure/ packages/**/allure/.",
+    "allure:open": "allure open packages/**/allure/report",
     "clean": "npx lerna run clean --parallel && npx shx rm -rf node_modules",
     "hello": "npx lerna run hello --parallel",
     "postinstall": "husky install",
