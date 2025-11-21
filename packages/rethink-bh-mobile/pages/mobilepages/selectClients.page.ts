@@ -29,7 +29,7 @@ class SelectClientsPage extends MobileBasePage {
 
   get selectButton() {
     return driver.isAndroid
-      ? $('//android.widget.TextView[@text="Select"]').getElement()
+      ? $('//androidx.compose.ui.platform.ComposeView//android.view.View[2]/android.widget.Button').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
