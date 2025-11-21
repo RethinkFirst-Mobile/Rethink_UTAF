@@ -6,7 +6,7 @@ class SamplePage extends MobileBasePage {
     return driver.isAndroid ? $('#androidLocator').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  async logIn(username: string) {
+  async logintoApp(username: string) {
     await super.setValue(await this.inputUsername, username);
   }
 }
