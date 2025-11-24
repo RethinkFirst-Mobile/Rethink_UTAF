@@ -6,10 +6,9 @@ class AppointmentDetailPage extends MobileBasePage {
       ? $('//android.widget.TextView[@text="Appointment Detail"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
+
   get saveButton() {
-    return driver.isAndroid
-      ? $('//androidx.compose.ui.platform.ComposeView//android.view.View[3]/android.widget.Button').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+    return driver.isAndroid ? $('//android.widget.TextView[@text="Save"]').getElement() : $('#iOSLocator').getElement(); // locator for Android //need to update
   }
 }
 export const appointmentDetailPage = new AppointmentDetailPage();
