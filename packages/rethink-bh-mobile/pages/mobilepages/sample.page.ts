@@ -7,7 +7,7 @@ class SamplePage extends MobileBasePage {
   }
 
   async logintoApp(username: string) {
-    await super.setValue(await this.inputUsername, username);
+    await super.type(await this.inputUsername, username);
   }
 }
 export const samplePage = new SamplePage();

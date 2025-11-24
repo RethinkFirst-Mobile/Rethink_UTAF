@@ -213,6 +213,16 @@ PLATFORM_VERSION = '18.5'
 ```
 
 
+**Note: To Find out the Device properties** like device names/udid, os versions etc., Please use the below commands.
+
+```
+# For Android devices
+$ adb devices 👈🏽
+
+# For iOS Devices
+$ xcrun xctrace list devices 👈🏽
+```
+
 ## Contributing
 
 Before contributing make sure you're onboarded to the project by one of the teammates. Use the above steps to setup the local development.

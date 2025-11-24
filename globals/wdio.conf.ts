@@ -142,6 +142,7 @@ async function generateReport(resultsDirectory: string, reportDirectory: string)
       if (exitCode !== 0) {
         return reject(reportError);
       }
+      // eslint-disable-next-line no-console
       console.log('Allure report successfully generated');
       resolve();
     });
