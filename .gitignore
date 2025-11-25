@@ -29,7 +29,7 @@ packages/**/allure/
 .env.production
 
 ### VisualStudioCode ###
-.vscode/*
+#.vscode/*
 !.vscode/example-launch.json
 !.vscode/settings.json
 !.vscode/tasks.json
