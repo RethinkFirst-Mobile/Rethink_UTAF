@@ -1,0 +1,24 @@
+#!/bin/bash
+
+BASE_URL=https://xray.cloud.getxray.app
+PROJECT=<PROJECT_KEY>
+
+KEYS=$1
+
+token=$(curl -H "Content-Type: application/json" -X POST --data @"packages/rethink-billing/xrayIntegration/xray_auth.json" $BASE_URL/api/v2/authenticate| tr -d '"')
+
+rm -rf packages/rethink-billing/e2e/features/$KEYS.zip
+
+curl \
+-H "Content-Type: application/json" \
+-X GET \
+-H "Authorization: Bearer $token" \
+"$BASE_URL/api/v1/export/cucumber?keys=$KEYS" \
+-o packages/rethink-billing/e2e/features/$KEYS.zip
+
+
+# rm -rf packages/rethink-billing/e2e/xray/$KEYS.feature
+unzip -o packages/rethink-billing/e2e/features/$KEYS.zip -d packages/rethink-billing/e2e/features/$KEYS
+mv packages/rethink-billing/e2e/features/$KEYS/*.feature packages/rethink-billing/e2e/features/$KEYS.feature
+rm -rf packages/rethink-billing/e2e/features/$KEYS.zip
+rm -rf packages/rethink-billing/e2e/features/$KEYS

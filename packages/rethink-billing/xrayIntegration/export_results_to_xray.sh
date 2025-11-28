@@ -1,0 +1,8 @@
+#!/bin/bash
+
+BASE_URL=https://xray.cloud.getxray.app
+REPORT=$1
+token=$(curl -H "Content-Type: application/json" -X POST --data @"packages/rethink-billing/xrayIntegration/xray_auth.json" "$BASE_URL/api/v1/authenticate"| tr -d '"')
+# need to work on this
+curl -H "Content-Type: multipart/form-data" -X POST -H "Authorization: Bearer $token"  -F "info=@packages/rethink-billing/xrayIntegration/testExecution.json"  -F "results=@packages/rethink-billing/tmp/reports/$REPORT" "$BASE_URL/api/v2/import/execution/cucumber/multipart"
+    
