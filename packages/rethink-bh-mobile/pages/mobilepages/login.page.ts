@@ -119,8 +119,8 @@ class LoginPage extends MobileBasePage {
   }
 
   async loginToApp(username: string, password: string) {
-    await super.setValue(await this.inputUsername, username);
-    await super.setValue(await this.inputPassword, password);
+    await super.type(await this.inputUsername, username);
+    await super.type(await this.inputPassword, password);
     await super.click(await this.loginButton);
   }
 }
