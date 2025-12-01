@@ -3,12 +3,14 @@ import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class DataPage extends MobileBasePage {
   get dataButton() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="Data"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
+    return driver.isAndroid
+      ? $('(//android.widget.TextView[@text="Data"])[last()]').getElement()
+      : $('#iOSLocator').getElement(); // locator for Android
   }
 
   get dataTitle() {
     return driver.isAndroid
-      ? $('(//android.widget.TextView[@text="Data"])[1]').getElement()
+      ? $('(//android.widget.TextView[@text="Data"])[position()=1]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
@@ -28,7 +30,7 @@ class DataPage extends MobileBasePage {
 
   get editIcon() {
     return driver.isAndroid
-      ? $('//android.view.View[@content-desc="Bug Bun, Wednesday, Nov 19, 5:48pm"]').getElement()
+      ? $('//android.view.View[@class="android.view.View" and contains(@content-desc," ")]').getElement()
       : $('#iOSLocator').getElement();
     // locator for Android
   }

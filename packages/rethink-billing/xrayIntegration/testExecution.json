@@ -1,0 +1,16 @@
+{
+  "fields": {
+    "project": {
+      "key": "<PROJECT_KEY>"
+    },
+    "summary": "Test Execution for cucumber Execution",
+    "issuetype": {
+      "id": "<ISSUE_TYPE_ID>"
+    },
+    "components": [
+      {
+        "name": "<COMPONENT_NAME>"
+      }
+    ]
+  }
+}

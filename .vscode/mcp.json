@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "appium-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["appium-mcp@latest"],
+      "env": {
+        "ANDROID_HOME": "/Users/it/Library/Android/sdk",
+        "CAPABILITIES_CONFIG": "/Volumes/Work/RethinkMobileWDIO/UTAF/.vscode/capabilities.json",
+        "TEMPLATESPATH": "/Volumes/Work/RethinkMobileWDIO/UTAF/.vscode/mcp-templates" // needs to be updated once the MCP is enabled
+      }
+    }
+  }
+}

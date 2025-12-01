@@ -1,0 +1,12 @@
+{
+  "android": {
+    "appium:deviceName": "47161FDAQ001J8",
+    "appium:platformVersion": "16.0",
+    "appium:automationName": "UiAutomator2"
+  },
+  "ios": {
+    "appium:deviceName": "iPhone 16 Pro",
+    "appium:platformVersion": "18.5",
+    "appium:automationName": "XCUITest"
+  }
+}
