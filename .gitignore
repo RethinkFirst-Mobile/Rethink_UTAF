@@ -30,6 +30,8 @@ packages/**/allure/
 
 ### VisualStudioCode ###
 .vscode/*
+.vscode/capabilities.json
+.vscode/mcp.json
 !.vscode/example-launch.json
 !.vscode/settings.json
 !.vscode/tasks.json
