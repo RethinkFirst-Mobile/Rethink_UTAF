@@ -14,7 +14,7 @@ class SelectClientsPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get clearButton() {
+  get clear() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Clear"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android

@@ -2,15 +2,19 @@
 import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class DataPage extends MobileBasePage {
-  get dataButton() {
+  get dataTitle() {
     return driver.isAndroid
-      ? $('(//android.widget.TextView[@text="Data"])[last()]').getElement()
+      ? $(
+          '//android.view.View[@content-desc="Include Completed"]/..//android.widget.TextView[@text="Data"]',
+        ).getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get dataTitle() {
+  get dataMenuIcon() {
     return driver.isAndroid
-      ? $('(//android.widget.TextView[@text="Data"])[position()=1]').getElement()
+      ? $(
+          '//android.widget.TextView[@text="Calendar"]/../following-sibling::android.view.View/android.widget.TextView[@text="Data"]',
+        ).getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
@@ -30,7 +34,7 @@ class DataPage extends MobileBasePage {
 
   get editIcon() {
     return driver.isAndroid
-      ? $('//android.view.View[@class="android.view.View" and contains(@content-desc," ")]').getElement()
+      ? $('//android.view.View[contains(@content-desc,"!NE !NE")]').getElement()
       : $('#iOSLocator').getElement();
     // locator for Android
   }
