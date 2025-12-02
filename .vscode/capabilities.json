@@ -1,7 +1,7 @@
 {
   "android": {
-    "appium:deviceName": "86c403a80118",
-    "appium:platformVersion": "14.0",
+    "appium:deviceName": "47161FDAQ001J8",
+    "appium:platformVersion": "16.0",
     "appium:automationName": "UiAutomator2"
   },
   "ios": {
