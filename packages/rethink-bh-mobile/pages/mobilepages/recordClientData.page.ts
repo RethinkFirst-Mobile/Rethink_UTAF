@@ -21,7 +21,7 @@ class RecordClientDataPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get moreInfoDialogOKButton() {
+  get moreInfoDialogOK() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="OK"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
@@ -51,13 +51,13 @@ class RecordClientDataPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get addButton() {
+  get add() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="add"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get removeButton() {
+  get remove() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="remove"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android

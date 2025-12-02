@@ -1,13 +1,15 @@
 import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class AppointmentDetailPage extends MobileBasePage {
+  private selectTimeVerificationLocator!: string;
+
   get appointmentDetailPageTitle() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Appointment Detail"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get saveButton() {
+  get save() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="Save"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
@@ -35,13 +37,13 @@ class AppointmentDetailPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get collectDataButton() {
+  get collectData() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Collect Data"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get selectTemplateSelectionField() {
+  get selectTemplate() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Select Template"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -71,7 +73,7 @@ class AppointmentDetailPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get ClearButton() {
+  get clear() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Clear"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -85,17 +87,17 @@ class AppointmentDetailPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get YesButton() {
+  get yes() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="Yes"]').getElement() : $('#iOSLocator').getElement(); // locator for Android //need to check as duplicate
   }
 
-  get CancelButton() {
+  get cancel() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Cancel"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get OKButton() {
+  get ok() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="OK"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
@@ -107,11 +109,11 @@ class AppointmentDetailPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get confirmationDialogYesButton() {
+  get confirmationDialogYes() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="Yes"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get confirmationDialogNoButton() {
+  get confirmationDialogNo() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="No"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
@@ -145,12 +147,12 @@ class AppointmentDetailPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get SelectAMButton() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="a.m."]').getElement() : $('#iOSLocator').getElement(); // locator for Android
+  set selectTimeVerification(action: string) {
+    this.selectTimeVerificationLocator = `//android.widget.TextView[@text=.,'${action}')]`;
   }
 
-  get SelectPMButton() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="p.m."]').getElement() : $('#iOSLocator').getElement(); // locator for Android
+  get selectTimeVerificationValue() {
+    return driver.isAndroid ? $(this.selectTimeVerificationLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
   get selectHourMarker() {
@@ -183,13 +185,7 @@ class AppointmentDetailPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get cancelButton() {
-    return driver.isAndroid
-      ? $('//android.view.View[@content-desc="select picker mode"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get verifyAsStaffButton() {
+  get verifyAsStaff() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Verify as Staff"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -233,18 +229,6 @@ class AppointmentDetailPage extends MobileBasePage {
   get clearSignatureIcon() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Clear"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get clockInButton() {
-    return driver.isAndroid
-      ? $(' //android.widget.TextView[@text="Clock In"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get clockOutButton() {
-    return driver.isAndroid
-      ? $('  //android.widget.TextView[@text="Clock Out"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 }

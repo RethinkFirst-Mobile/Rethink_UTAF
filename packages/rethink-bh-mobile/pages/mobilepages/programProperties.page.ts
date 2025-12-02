@@ -19,7 +19,7 @@ class ProgramPropertiesPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get moreInfoDialogOKButton() {
+  get moreInfoDialogOK() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="OK"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
@@ -39,29 +39,29 @@ class ProgramPropertiesPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get baselineRadioButton() {
+  get baseline() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Baseline"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get interventionRadioButton() {
+  get intervention() {
     return driver.isAndroid
       ? $('(//android.widget.TextView[@text="Intervention"])[2]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get yesButton() {
+  get yes() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="Yes"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get cancelButton() {
+  get cancel() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Cancel"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get noButton() {
+  get no() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="No"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 

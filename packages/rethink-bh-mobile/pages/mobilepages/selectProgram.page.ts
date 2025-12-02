@@ -47,7 +47,7 @@ class SelectProgramsPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get selectButton() {
+  get select() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Select"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
