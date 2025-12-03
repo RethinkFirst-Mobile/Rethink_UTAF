@@ -1,1 +1,23 @@
+STAGED_FILES=$(git diff --cached --name-only)
+
+if echo "$STAGED_FILES" | grep -q '^.vscode/' || echo "$STAGED_FILES" | grep -q '^package-lock.json$'; then
+  echo ""
+  echo ""
+  echo "------------------------------------------"
+  echo ""
+  echo -e "\033[1;31mError: Do not commit files from the .vscode folder or package-lock.json.\033[0m"
+  echo ""
+  echo "To stop seeing this error further, please run the below command once:"
+  echo ""
+  echo "git update-index --assume-unchanged .vscode/*"
+  echo ""
+  echo "git update-index --assume-unchanged package-lock.json"
+  echo ""
+  echo ""
+  echo "------------------------------------------"
+  echo ""
+  echo ""
+  exit 1
+fi
+
 npm run lint
