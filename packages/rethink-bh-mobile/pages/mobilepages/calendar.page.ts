@@ -4,19 +4,19 @@ class CalendarPage extends MobileBasePage {
   get calendarPageTitle() {
     return driver.isAndroid
       ? $('(//android.widget.TextView[@text="Calendar"])[1]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $('//XCUIElementTypeStaticText[@name="Calendar"]').getElement();
   }
 
   get calendarMenuIcon() {
     return driver.isAndroid
       ? $('(//android.widget.TextView[@text="Calendar"])[2]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $('//XCUIElementTypeImage[@name="calendar" and @label="calendar"]').getElement();
   }
 
   get showArchiveToggle() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Show Archive"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $('//XCUIElementTypeSwitch[@name="Show Archived"]').getElement(); // locator for Android
   }
 
   get showCancelledToggle() {
@@ -28,13 +28,15 @@ class CalendarPage extends MobileBasePage {
   get appointNeedVerification() {
     return driver.isAndroid
       ? $('//android.widget.TextView[contains(@text,"Appointments Need Verification")]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $(
+          "//XCUIElementTypeStaticText[substring(@name, 1, 1) >= '0' and substring(@name, 1, 1) <= '9'][contains(@name,\"Needs Verification\")]",
+        ).getElement(); // locator for Android
   }
 
   get todaysDate() {
     return driver.isAndroid
       ? $('//android.widget.TextView[contains(@text,"Today")]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $('//XCUIElementTypeButton[starts-with(@name, "Today")]').getElement(); // locator for Android
   }
 
   get dragHandle() {
@@ -46,13 +48,15 @@ class CalendarPage extends MobileBasePage {
   get appointmentDescIcon() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Appointment description"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $('//XCUIElementTypeImage[@name="calendar" and @label="Calendar"]').getElement(); // locator for Android
   }
 
   get noAppointmentsAvail() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="No appointments available to select"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $(
+          '//XCUIElementTypeStaticText[@name="You have no appointments scheduled on the selected dates."]',
+        ).getElement(); // locator for Android
   }
 }
 export const calendarPage = new CalendarPage();
