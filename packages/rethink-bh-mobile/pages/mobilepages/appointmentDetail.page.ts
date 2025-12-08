@@ -1,4 +1,3 @@
-
 import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class AppointmentDetailPage extends MobileBasePage {

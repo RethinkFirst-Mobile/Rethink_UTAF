@@ -21,7 +21,7 @@ class LoginPage extends MobileBasePage {
       : $('Password').getElement();
   }
 
-  get loginButton() {
+  get login() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="Login"]').getElement() : $('Sign In').getElement();
   }
 
@@ -32,8 +32,8 @@ class LoginPage extends MobileBasePage {
   }
   get faceIdImage() {
     return driver.isAndroid
-      ? $('//android.widget.ImageView[@content-desc="faceid"]').getElement()
-      : $('faceid').getElement();
+      ? $('#Android Locator').getElement()
+      : $('(//XCUIElementTypeSwitch[@value="0"])[2]').getElement();
   }
 
   get forgotUsername() {
@@ -60,13 +60,13 @@ class LoginPage extends MobileBasePage {
       : $('//XCUIElementTypeTextField[@name="ForgotCredentialsEmail"]').getElement();
   }
 
-  get submitButton() {
+  get submit() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Submit"]').getElement()
       : $('//XCUIElementTypeButton[@name="ForgotCredentialsSubmit"]').getElement();
   }
 
-  get cancelButton() {
+  get cancel() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Cancel"]').getElement()
       : $('//XCUIElementTypeButton[@name="ForgotCredentialsCancel"]').getElement();
@@ -90,11 +90,11 @@ class LoginPage extends MobileBasePage {
       : $('#iOS Locator').getElement();
   }
 
-  get yesButton() {
+  get yes() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="Yes"]').getElement() : $('#iOS Locator').getElement();
   }
 
-  get noButton() {
+  get no() {
     return driver.isAndroid ? $('//android.widget.TextView[@text="No"]').getElement() : $('#iOS Locator').getElement();
   }
 
@@ -110,7 +110,7 @@ class LoginPage extends MobileBasePage {
       : $('//XCUIElementTypeStaticText[@name="Please enter a valid email address."]').getElement();
   }
 
-  get okButton() {
+  get ok() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="OK"]').getElement()
       : $('//XCUIElementTypeButton[@name="OK"]').getElement(); // locator for Android
@@ -126,13 +126,13 @@ class LoginPage extends MobileBasePage {
   async environmentChooserOptions() {
     await super.click(await this.rethinkLogo);
     await super.click(await this.chooseEnvironment);
-    await super.click(await this.okButton);
+    await super.click(await this.ok);
   }
 
   async loginToApp(username: string, password: string) {
     await super.type(await this.inputUsername, username);
     await super.type(await this.inputPassword, password);
-    await super.click(await this.loginButton);
+    await super.click(await this.login);
   }
 }
 export const loginPage = new LoginPage();
