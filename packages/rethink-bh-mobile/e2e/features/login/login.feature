@@ -4,11 +4,11 @@ Feature: Verifying the Login Functionality of the Rethink-BH Mobile App
   Given I am on the login page
   When I login with "<username>" and "<password>"
   And I click on the Login button
-  Then I should be logged in to the application successfully
+  Then I should be logged in to the application for valid credentials
 
   Examples:
    | username  | password  |
    | DataProp1 | DataProp1 |
    | Test1     | Test1     |
    | Test1     |          |
-#    |    ""       | Test1     |
+   |           | Test1     |

@@ -9,7 +9,7 @@ class Page extends WebPage {
    * @param path path of the sub page (e.g. /path/to/page.html)
    */
   async open(path: string) {
-    await super.open(`https://rta-bh-qa01-web.azurewebsites.net/Healthcare#/Login${path}`);
+    await super.open(`https://the-internet.herokuapp.com/${path}`);
   }
 }
 export default new Page();
