@@ -2,74 +2,34 @@ import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class RecordClientDataPage extends MobileBasePage {
   private clientSelectionLocator!: string;
+  private skillSelectionLocator!: string;
+  private behaviorSelectionLocator!: string;
 
-  get recordClientDataPageTitle() {
-    return driver.isAndroid
-      ? $('//android.widget.TextView[@text="Record Client Data"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+  set clientName(clientNameVal: string) {
+    this.clientSelectionLocator = `//android.widget.TextView[@text=(.,'${clientNameVal}')]`;
   }
 
-  get backwardIcon() {
-    return driver.isAndroid
-      ? $('(//android.view.View[@content-desc="backIcon"])[2]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get moreInfoIcon() {
-    return driver.isAndroid
-      ? $('//android.view.View[@content-desc="More Info"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get moreInfoDialogOK() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="OK"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get skillsTab() {
-    return driver.isAndroid
-      ? $('//android.widget.TextView[@text="SKILLS"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get behaviorsTab() {
-    return driver.isAndroid
-      ? $('//android.widget.TextView[@text="BEHAVIORS"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  set selectClient(Name: string) {
-    this.clientSelectionLocator = `//android.widget.TextView[@text=(.,'${Name}')]`;
-  }
-
-  get clientName() {
+  get client() {
     return driver.isAndroid ? $(this.clientSelectionLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
+  set skill(skillName: string) {
+    this.skillSelectionLocator = `//android.widget.TextView[@text=(.,'${skillName}')]`;
+  }
+
   get selectedSkill() {
-    return driver.isAndroid
-      ? $('(//android.view.View[@content-desc="backIcon"])[1]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+    return driver.isAndroid ? $(this.skillSelectionLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get add() {
-    return driver.isAndroid
-      ? $('//android.view.View[@content-desc="add"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get remove() {
-    return driver.isAndroid
-      ? $('//android.view.View[@content-desc="remove"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+  set behavior(behaviorName: string) {
+    this.behaviorSelectionLocator = `//android.widget.TextView[@text=(.,'${behaviorName}')]`;
   }
 
   get selectedBehavior() {
-    return driver.isAndroid
-      ? $('(//android.view.View[@content-desc="backIcon"])[1]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+    return driver.isAndroid ? $(this.behaviorSelectionLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get programDetailsIcon() {
+  get programDetails() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Program Details"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android

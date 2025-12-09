@@ -1,71 +1,17 @@
 import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class ProgramPropertiesPage extends MobileBasePage {
-  get programPropertiesPageTitle() {
-    return driver.isAndroid
-      ? $('//android.widget.TextView[@text="Program Properties"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+  private dataCollectionModeLocator!: string;
+
+  set dataCollection(name: string) {
+    this.dataCollectionModeLocator = `//android.widget.TextView[@text=.,'${name}')]`;
   }
 
-  get backwardIcon() {
-    return driver.isAndroid
-      ? $('//android.view.View[@content-desc="Back"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+  get dataCollectionMode() {
+    return driver.isAndroid ? $(this.dataCollectionModeLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get moreInfoIcon() {
-    return driver.isAndroid
-      ? $('//android.view.View[@content-desc="More Info"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get moreInfoDialogOK() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="OK"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get settingsTab() {
-    return driver.isAndroid
-      ? $('//android.widget.TextView[@text="SETTINGS"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get dataTab() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="DATA"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get notesTab() {
-    return driver.isAndroid
-      ? $('//android.widget.TextView[@text="NOTES"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get baseline() {
-    return driver.isAndroid
-      ? $('//android.widget.TextView[@text="Baseline"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get intervention() {
-    return driver.isAndroid
-      ? $('(//android.widget.TextView[@text="Intervention"])[2]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get yes() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="Yes"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get cancel() {
-    return driver.isAndroid
-      ? $('//android.widget.TextView[@text="Cancel"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get no() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="No"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get inputNoteComments() {
+  get additionalComments() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Additional Comments…"]/..').getElement()
       : $('#iOSLocator').getElement(); // locator for Android

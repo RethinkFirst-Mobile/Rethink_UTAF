@@ -3,23 +3,11 @@ import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 class SelectProgramsPage extends MobileBasePage {
   private clientSelectionLocator!: string;
 
-  get selectProgramsPageTitle() {
-    return driver.isAndroid
-      ? $('//android.widget.TextView[@text="Select Programs"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+  set clientName(clientNameVal: string) {
+    this.clientSelectionLocator = `//android.widget.TextView[@text=(.,'${clientNameVal}')]`;
   }
 
-  get backwardIcon() {
-    return driver.isAndroid
-      ? $('//android.view.View[@content-desc="Back"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  set selectClient(Name: string) {
-    this.clientSelectionLocator = `//android.widget.TextView[@text=(.,'${Name}')]`;
-  }
-
-  get clientName() {
+  get client() {
     return driver.isAndroid ? $(this.clientSelectionLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
@@ -29,7 +17,7 @@ class SelectProgramsPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get selectAllBehaviorsCheckbox() {
+  get selectAllBehaviors() {
     return driver.isAndroid
       ? $('//android.widget.CheckBox[@content-desc="Select All Behaviors"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -41,13 +29,13 @@ class SelectProgramsPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get selectAllSkillsCheckbox() {
+  get selectAllSkills() {
     return driver.isAndroid
       ? $('//android.widget.CheckBox[@content-desc="Select All Skills"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get select() {
+  get selectPrograms() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Select"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
