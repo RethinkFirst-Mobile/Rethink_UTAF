@@ -44,4 +44,4 @@ class SelectClientsPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 }
-export const selectClientsPage = new SelectClientsPage();
+export default new SelectClientsPage();
