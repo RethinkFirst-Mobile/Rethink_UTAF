@@ -2,27 +2,30 @@ import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class LoginPage extends MobileBasePage {
   private environmentSelectionLocator!: string;
+  private environmentSelectionLocator_iOS!: string;
 
   get rethinkLogo() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Rethink BH Logo"]').getElement()
-      : $('Rethink Logo').getElement();
+      : $('//XCUIElementTypeImage[@name="Rethink Logo"]').getElement();
   }
 
   get inputUsername() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Username"]/..').getElement()
-      : $('Username').getElement();
+      : $('//XCUIElementTypeTextField[@name="Username"]').getElement();
   }
 
   get inputPassword() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Password"]/..').getElement()
-      : $('Password').getElement();
+      : $('//XCUIElementTypeSecureTextField[@name="Password"]').getElement();
   }
 
   get login() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="Login"]').getElement() : $('Sign In').getElement();
+    return driver.isAndroid
+      ? $('//android.widget.TextView[@text="Login"]').getElement()
+      : $('//XCUIElementTypeButton[@name="Sign In"]').getElement();
   }
 
   get rememberMe() {
@@ -30,6 +33,7 @@ class LoginPage extends MobileBasePage {
       ? $('//android.widget.TextView[@text="Remember Me"]/..').getElement()
       : $('//XCUIElementTypeSwitch[@name="Remember Me"]').getElement();
   }
+
   get faceIdImage() {
     return driver.isAndroid
       ? $('#Android Locator').getElement()
@@ -39,19 +43,19 @@ class LoginPage extends MobileBasePage {
   get forgotUsername() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@content-desc="Forgot   username"]').getElement()
-      : $('ForgotUsername').getElement();
+      : $('//XCUIElementTypeButton[@name="ForgotUsername"]').getElement();
   }
 
   get forgotPassword() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@content-desc="Forgot   password"]').getElement()
-      : $('ForgotPassword').getElement();
+      : $('//XCUIElementTypeButton[@name="ForgotPassword"]').getElement();
   }
 
   get forgotIText() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="I forgot my"]').getElement()
-      : $('I forgot my').getElement();
+      : $('//XCUIElementTypeStaticText[@name="I forgot my"]').getElement();
   }
 
   get inputResetCredentials() {
@@ -75,7 +79,7 @@ class LoginPage extends MobileBasePage {
   get termsOfUse() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Terms of Use"]').getElement()
-      : $('Terms of Use').getElement();
+      : $('//XCUIElementTypeButton[@name="Terms of Use"]').getElement();
   }
 
   get errorPopup() {
@@ -118,9 +122,12 @@ class LoginPage extends MobileBasePage {
 
   set environmentChooser(envValue: string) {
     this.environmentSelectionLocator = `//android.view.View[@content-desc=(.,'${envValue}')]`;
+    this.environmentSelectionLocator_iOS = `//XCUIElementTypeStaticText[@name="${envValue}"]`;
   }
   get chooseEnvironment() {
-    return driver.isAndroid ? $(this.environmentSelectionLocator).getElement() : $('#iOSLocator').getElement();
+    return driver.isAndroid
+      ? $(this.environmentSelectionLocator).getElement()
+      : $(this.environmentSelectionLocator_iOS).getElement();
   }
 
   async environmentChooserOptions() {

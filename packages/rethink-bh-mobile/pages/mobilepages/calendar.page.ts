@@ -16,39 +16,39 @@ class CalendarPage extends MobileBasePage {
   get showArchiveToggle() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Show Archive"]').getElement()
-      : $('//XCUIElementTypeSwitch[@name="Show Archived"]').getElement(); // locator for Android
+      : $('//XCUIElementTypeSwitch[@name="Show Archived"]').getElement();
   }
 
   get showCancelledToggle() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Show Cancelled"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $('//XCUIElementTypeSwitch[@name="Show Cancelled"]').getElement();
   }
 
   get appointNeedVerification() {
     return driver.isAndroid
       ? $('//android.widget.TextView[contains(@text,"Appointments Need Verification")]').getElement()
       : $(
-          "//XCUIElementTypeStaticText[substring(@name, 1, 1) >= '0' and substring(@name, 1, 1) <= '9'][contains(@name,\"Needs Verification\")]",
-        ).getElement(); // locator for Android
+          '//XCUIElementTypeNavigationBar//XCUIElementTypeStaticText[contains(@label,"Needs Verification")]',
+        ).getElement();
   }
 
   get todaysDate() {
     return driver.isAndroid
       ? $('//android.widget.TextView[contains(@text,"Today")]').getElement()
-      : $('//XCUIElementTypeButton[starts-with(@name, "Today")]').getElement(); // locator for Android
+      : $('//XCUIElementTypeButton[starts-with(@name, "Today")]').getElement();
   }
 
   get dragHandle() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Drag handle"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $('#iOSLocator').getElement();
   }
 
   get appointmentDescIcon() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Appointment description"]').getElement()
-      : $('//XCUIElementTypeImage[@name="calendar" and @label="Calendar"]').getElement(); // locator for Android
+      : $('(//XCUIElementTypeImage[@name="calendar"])[1]').getElement();
   }
 
   get noAppointmentsAvail() {
@@ -56,7 +56,7 @@ class CalendarPage extends MobileBasePage {
       ? $('//android.widget.TextView[@text="No appointments available to select"]').getElement()
       : $(
           '//XCUIElementTypeStaticText[@name="You have no appointments scheduled on the selected dates."]',
-        ).getElement(); // locator for Android
+        ).getElement();
   }
 }
 export const calendarPage = new CalendarPage();
