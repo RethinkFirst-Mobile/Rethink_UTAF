@@ -4,11 +4,21 @@ class AppointmentDetailPage extends MobileBasePage {
   get appointmentDetailPageTitle() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Appointment Detail"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
+      : $('accessibility id:Appointment Detail').getElement();
   }
 
   get saveButton() {
-    return driver.isAndroid ? $('//android.widget.TextView[@text="Save"]').getElement() : $('#iOSLocator').getElement(); // locator for Android //need to update
+    return driver.isAndroid
+      ? $('//android.widget.TextView[@text="Save"]').getElement()
+      : $('accessibility id:Save').getElement();
   }
+
+  // Add more getters below as needed, for example:
+  // get cancelButton() {
+  //   return driver.isAndroid
+  //     ? $('//android.widget.TextView[@text="Cancel"]').getElement()
+  //     : $('accessibility id:Cancel').getElement();
+  // }
 }
+
 export const appointmentDetailPage = new AppointmentDetailPage();
