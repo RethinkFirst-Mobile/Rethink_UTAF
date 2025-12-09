@@ -124,4 +124,4 @@ class LoginPage extends MobileBasePage {
     await super.click(await this.loginButton);
   }
 }
-export const loginPage = new LoginPage();
+export default new LoginPage();

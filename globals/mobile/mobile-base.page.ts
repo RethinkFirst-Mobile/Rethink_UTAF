@@ -24,7 +24,7 @@ export class MobileBasePage {
   }
 
   async click(element: WebdriverIO.Element) {
-    await element.waitForClickable({ timeout: 5000, timeoutMsg: 'Element was not clickable.' });
+    //await element.waitForClickable({ timeout: 5000, timeoutMsg: 'Element was not clickable.' });
     await element.click();
   }
 

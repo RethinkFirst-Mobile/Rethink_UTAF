@@ -2,7 +2,7 @@
 import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class SelectClientsPage extends MobileBasePage {
-  get selectClientsTitle() {
+  get pageTitle() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Select Clients"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -14,7 +14,7 @@ class SelectClientsPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get clear() {
+  get clearClientSearch() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Clear"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -26,19 +26,19 @@ class SelectClientsPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get select() {
+  get selectClients() {
     return driver.isAndroid
       ? $('	//android.widget.TextView[@text="Select"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get eyeIcon() {
+  get previewProgram() {
     return driver.isAndroid
       ? $('//android.widget.ImageView[@content-desc="Preview Program !!!, !!!"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get selectProgramsCheckbox() {
+  get selectClientsCheckbox() {
     return driver.isAndroid
       ? $('//android.widget.CheckBox[@content-desc="!!!, !!!"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android

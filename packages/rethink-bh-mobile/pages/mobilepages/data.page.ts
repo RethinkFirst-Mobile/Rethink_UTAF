@@ -2,7 +2,7 @@
 import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class DataPage extends MobileBasePage {
-  get dataTitle() {
+  get pageTitle() {
     return driver.isAndroid
       ? $(
           '//android.view.View[@content-desc="Include Completed"]/..//android.widget.TextView[@text="Data"]',
@@ -18,25 +18,25 @@ class DataPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get includeButton() {
+  get includeCompleted() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="Include Completed"]').getElement()
       : $('#iOSLocator').getElement();
     // locator for Android
   }
 
-  get plusIcon() {
+  get newSession() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="New Session"]').getElement()
       : $('#iOSLocator').getElement();
     // locator for Android
   }
 
-  get editIcon() {
+  get editSession() {
     return driver.isAndroid
       ? $('//android.view.View[contains(@content-desc,"!NE !NE")]').getElement()
       : $('#iOSLocator').getElement();
     // locator for Android
   }
 }
-export const dataPage = new DataPage();
+export default new DataPage();
