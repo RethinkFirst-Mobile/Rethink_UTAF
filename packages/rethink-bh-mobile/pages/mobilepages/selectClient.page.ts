@@ -34,14 +34,18 @@ class SelectClientsPage extends MobileBasePage {
 
   get previewProgram() {
     return driver.isAndroid
-      ? $('//android.widget.ImageView[@content-desc="Preview Program !!!, !!!"]').getElement()
+      ? $(
+          '(//android.widget.TextView[@text="Select"]/../following-sibling::android.view.View/android.view.View/android.widget.ImageView)[1]',
+        ).getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
   get selectClientsCheckbox() {
     return driver.isAndroid
-      ? $('//android.widget.CheckBox[@content-desc="!!!, !!!"]').getElement()
+      ? $(
+          '(//android.widget.TextView[@text="Select"]/../following-sibling::android.view.View/android.view.View/android.widget.CheckBox)[1]',
+        ).getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 }
-export default new SelectClientsPage();
+export const selectClientsPage = new SelectClientsPage();

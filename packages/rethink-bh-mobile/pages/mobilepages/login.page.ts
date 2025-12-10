@@ -112,7 +112,8 @@ class LoginPage extends MobileBasePage {
     return driver.isAndroid ? $(this.environmentSelectionLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  async environmentChooserOptions() {
+  async environmentChooserOptions(envValue: string) {
+    this.environmentChooser = envValue;
     await super.click(await this.rethinkLogo);
     await super.click(await this.chooseEnvironment);
     await super.click(await this.okButton);
@@ -124,4 +125,4 @@ class LoginPage extends MobileBasePage {
     await super.click(await this.loginButton);
   }
 }
-export default new LoginPage();
+export const loginPage = new LoginPage();
