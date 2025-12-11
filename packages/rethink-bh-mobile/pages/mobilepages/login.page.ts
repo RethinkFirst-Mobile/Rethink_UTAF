@@ -51,13 +51,13 @@ class LoginPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get submitButton() {
+  get submit() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Submit"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get cancelButton() {
+  get cancel() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Cancel"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -105,6 +105,18 @@ class LoginPage extends MobileBasePage {
     return driver.isAndroid ? $('//android.widget.TextView[@text="OK"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
+  get resetUsernamePage() {
+    return driver.isAndroid
+      ? $('//android.widget.TextView[contains (@text, "reset your Username")]').getElement()
+      : $('#iOSLocator').getElement(); // locator for Android
+  }
+
+  get resetPasswordPage() {
+    return driver.isAndroid
+      ? $('//android.widget.TextView[contains (@text, "reset your Password")]').getElement()
+      : $('#iOSLocator').getElement(); // locator for Android
+  }
+
   set environmentChooser(envValue: string) {
     this.environmentSelectionLocator = `//android.view.View[@content-desc=(.,'${envValue}')]`;
   }
@@ -123,5 +135,12 @@ class LoginPage extends MobileBasePage {
     await super.type(await this.inputPassword, password);
     await super.click(await this.loginButton);
   }
+
+  get resetSuccessMessage() {
+    return driver.isAndroid
+      ? $('//android.widget.TextView[contains(@text,"Username reset link sent to your email")]').getElement()
+      : $('#iOSLocator').getElement(); // locator for Android
+  }
 }
+
 export const loginPage = new LoginPage();
