@@ -1,6 +1,7 @@
 import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class LoginPage extends MobileBasePage {
+  private resetCredentialStatusLocator!: string;
   private environmentSelectionLocator!: string;
 
   get rethinkLogo() {
@@ -51,13 +52,13 @@ class LoginPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get submitButton() {
+  get submit() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Submit"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get cancelButton() {
+  get cancel() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Cancel"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -105,13 +106,13 @@ class LoginPage extends MobileBasePage {
     return driver.isAndroid ? $('//android.widget.TextView[@text="OK"]').getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get resetUsernameScreen() {
+  get resetUsernamePage() {
     return driver.isAndroid
       ? $('//android.widget.TextView[contains (@text, "reset your Username")]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get resetPasswordScreen() {
+  get resetPasswordPage() {
     return driver.isAndroid
       ? $('//android.widget.TextView[contains (@text, "reset your Password")]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -136,45 +137,18 @@ class LoginPage extends MobileBasePage {
     await super.click(await this.loginButton);
   }
 
-  async waitForLoginScreen() {
-    await super.waitForPresence(await this.rethinkLogo);
-    await expect(await this.rethinkLogo).toBeDisplayed();
-  }
-
-  async forgotUsernameProcess(email: string) {
-    await super.click(await this.forgotUsername);
-    await expect(await this.resetUsernameScreen).toBeDisplayed();
-    await super.type(await this.inputResetCredentials, email);
-  }
-
-  async forgotPasswordProcess(email: string) {
-    await super.click(await this.forgotPassword);
-    await expect(await this.resetPasswordScreen).toBeDisplayed();
-    await super.type(await this.inputResetCredentials, email);
-  }
-
-  async submit() {
-    await super.click(await this.submitButton);
-  }
-
   get successMessage() {
     return driver.isAndroid
       ? $('//android.widget.TextView[contains(@text,"Username reset link sent to your email")]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  async getDisplayedMessages() {
-    const messages = [];
-    if (await (await this.inputEmailFormatError).isDisplayed()) {
-      messages.push(await super.getText(await this.inputEmailFormatError));
-    }
-    if (await (await this.mandateFieldError).isDisplayed()) {
-      messages.push(await super.getText(await this.mandateFieldError));
-    }
-    if (await (await this.successMessage).isDisplayed()) {
-      messages.push(await super.getText(await this.successMessage));
-    }
-    return messages;
+  set resetCredentialMessage(statusMessage: string) {
+    this.resetCredentialStatusLocator = `//android.widget.TextView[@text=.,'${statusMessage}')]`;
+  }
+
+  get resetCredentialStatusMessage() {
+    return driver.isAndroid ? $(this.resetCredentialStatusLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 }
 

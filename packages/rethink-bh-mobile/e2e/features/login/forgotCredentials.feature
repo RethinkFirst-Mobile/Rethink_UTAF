@@ -4,6 +4,7 @@ Feature: Verifying the Forgot Credentials(Username/Password) Functionality of th
   Given User on the login screen
   When User tries to retrieve the "<type>" with "<email>"
   Then User should able to see the message "<message>"
+
   Examples:
    | type     | email            | message                                           |
    | username | dummy            | Input an email in the format: example@example.com |
@@ -12,3 +13,4 @@ Feature: Verifying the Forgot Credentials(Username/Password) Functionality of th
    | password | dummy            | Input an email in the format: example@example.com |
    | password |                  | Email is required                                 |
    | password | test@rethink.com | Password reset link sent to your email            |
+

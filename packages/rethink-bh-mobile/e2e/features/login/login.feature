@@ -9,4 +9,4 @@ Feature: Verifying the Login Functionality of the Rethink-BH Mobile App
    | DataProp1 | DataProp1 |
    | Test1     | Test1     |
    | Test1     |           |
-   |           | Test1     |
+   |           | Test1     |                                                                                                                                                                  
