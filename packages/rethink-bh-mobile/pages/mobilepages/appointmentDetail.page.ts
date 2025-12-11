@@ -154,6 +154,5 @@ class AppointmentDetailPage extends MobileBasePage {
   }
 
   // #endregion
-  
 }
 export const appointmentDetailPage = new AppointmentDetailPage();

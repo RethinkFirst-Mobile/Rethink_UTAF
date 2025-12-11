@@ -1,19 +1,18 @@
 import { MobileBasePage } from 'globals/mobile/mobile-base.page';
 
 class ModalDialogComponent extends MobileBasePage {
-  
   // #region ***************Confirmation Dialog Modal Locators***************
   //Getters and setters for Confirmation Dialog Modal Locators like Yes, No, Cancel, OK buttons
 
-  private actionsLocator!: string;
+  private actionLocator!: string;
   private bodyMessageLocator!: string;
 
   set actionType(buttonText: string) {
-    this.actionsLocator = `//android.widget.TextView[@text="${buttonText}"]`;
+    this.actionLocator = `//android.widget.TextView[@text="${buttonText}"]`;
   }
 
   get action() {
-    return driver.isAndroid ? $(this.actionsLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
+    return driver.isAndroid ? $(this.actionLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 
   set bodyMessage(bodyText: string) {
@@ -25,6 +24,5 @@ class ModalDialogComponent extends MobileBasePage {
   }
 
   // #endregion
-
 }
 export const modalDialogComponent = new ModalDialogComponent();
