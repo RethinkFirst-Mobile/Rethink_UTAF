@@ -35,8 +35,8 @@ Then('User should able to see the message {string}', async (message) => {
     await loginPage.click(await loginPage.submit);
   } else {
     await loginPage.click(await loginPage.submit);
-    if (await loginPage.isDisplayed(await loginPage.successMessage)) {
-      expect(await loginPage.getText(await loginPage.successMessage)).toBe(message);
+    if (await loginPage.isDisplayed(await loginPage.resetSuccessMessage)) {
+      expect(await loginPage.getText(await loginPage.resetSuccessMessage)).toBe(message);
       await loginPage.click(await loginPage.submit);
     } else {
       throw new Error(`None of the expected validation messages were displayed. Actual message: ${message}`);

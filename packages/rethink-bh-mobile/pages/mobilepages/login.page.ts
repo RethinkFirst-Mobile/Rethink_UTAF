@@ -1,7 +1,6 @@
 import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 
 class LoginPage extends MobileBasePage {
-  private resetCredentialStatusLocator!: string;
   private environmentSelectionLocator!: string;
 
   get rethinkLogo() {
@@ -137,18 +136,10 @@ class LoginPage extends MobileBasePage {
     await super.click(await this.loginButton);
   }
 
-  get successMessage() {
+  get resetSuccessMessage() {
     return driver.isAndroid
       ? $('//android.widget.TextView[contains(@text,"Username reset link sent to your email")]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  set resetCredentialMessage(statusMessage: string) {
-    this.resetCredentialStatusLocator = `//android.widget.TextView[@text=.,'${statusMessage}')]`;
-  }
-
-  get resetCredentialStatusMessage() {
-    return driver.isAndroid ? $(this.resetCredentialStatusLocator).getElement() : $('#iOSLocator').getElement(); // locator for Android
   }
 }
 
