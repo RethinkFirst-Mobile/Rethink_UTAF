@@ -3,7 +3,9 @@ import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 class AppointmentDetailPage extends MobileBasePage {
   private selectTimeVerificationLocator!: string;
   private selectedTemplateLocator!: string;
+
   // #region ***************DETAILS_TABLocators***************
+
   get collectData() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Collect Data"]').getElement()
@@ -12,6 +14,7 @@ class AppointmentDetailPage extends MobileBasePage {
   // #endregion
 
   // #region ***************NOTES_TABLocators***************
+
   get selectTemplate() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Select Template"]').getElement()
@@ -42,7 +45,7 @@ class AppointmentDetailPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get staffActualTime() {
+  get actualStartTime() {
     return driver.isAndroid
       ? $(
           '//android.widget.TextView[@text="Actual Start Time:"]/following-sibling::android.widget.TextView[1]',
@@ -50,7 +53,7 @@ class AppointmentDetailPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get staffEndTime() {
+  get actualEndTime() {
     return driver.isAndroid
       ? $(
           '//android.widget.TextView[@text="Actual End Time:"]/following-sibling::android.widget.TextView[1]',
@@ -114,13 +117,13 @@ class AppointmentDetailPage extends MobileBasePage {
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get inputParentName() {
+  get parentName() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Parent Name"]/../android.widget.EditText[1]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 
-  get inputRelationStatus() {
+  get relationStatus() {
     return driver.isAndroid
       ? $('//android.widget.TextView[@text="Relation"]/../android.widget.EditText[2]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
@@ -149,6 +152,8 @@ class AppointmentDetailPage extends MobileBasePage {
       ? $('//android.view.View[@content-desc="Clear"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
+
   // #endregion
+  
 }
 export const appointmentDetailPage = new AppointmentDetailPage();

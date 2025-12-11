@@ -3,8 +3,8 @@ import { MobileBasePage } from '../../../../globals/mobile/mobile-base.page';
 class ProgramPropertiesPage extends MobileBasePage {
   private dataCollectionModeLocator!: string;
 
-  set dataCollection(name: string) {
-    this.dataCollectionModeLocator = `//android.widget.TextView[@text=.,'${name}')]`;
+  set dataCollectionModeType(modeName: string) {
+    this.dataCollectionModeLocator = `//android.widget.TextView[@text=.,'${modeName}')]`;
   }
 
   get dataCollectionMode() {

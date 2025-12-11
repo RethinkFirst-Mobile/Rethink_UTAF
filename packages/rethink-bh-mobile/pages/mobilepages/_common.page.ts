@@ -4,7 +4,7 @@ class CommonPage extends MobileBasePage {
   private pageTitleLocator!: string;
   private selectTabsLocator!: string;
 
-  set pageTitleName(titleName: string) {
+  set pageName(titleName: string) {
     this.pageTitleLocator = `//android.widget.TextView[@text=.,'${titleName}')]`;
   }
 
@@ -39,18 +39,6 @@ class CommonPage extends MobileBasePage {
   get moreInfo() {
     return driver.isAndroid
       ? $('//android.view.View[@content-desc="More Info"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get add() {
-    return driver.isAndroid
-      ? $('//android.view.View[@content-desc="add"]').getElement()
-      : $('#iOSLocator').getElement(); // locator for Android
-  }
-
-  get remove() {
-    return driver.isAndroid
-      ? $('//android.view.View[@content-desc="remove"]').getElement()
       : $('#iOSLocator').getElement(); // locator for Android
   }
 }
